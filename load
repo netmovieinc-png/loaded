@@ -1,0 +1,50 @@
+{
+  "f_upt": true,
+  "ntw_ver": "23.1.0",
+  "ntw_cod": 24,
+  "ntw_des": "what's new: \n • Some Little Bugs Fixed!",
+  "ntw_url": "https://github.com/jamestom986/Netmovie/releases/download/V-23.1/NetWatch_24.apk",
+
+  "ntv_ver": "7.0",
+  "ntv_cod": 10,
+  "ntv_des": "what's new: \n • all issue fixed",
+  "ntv_url":"https://github.com/jamestom986/Netmovie/releases/download/ntv-7.0/NetTv.apk",
+
+  "nspt_ver": "31",
+  "nspt_cod": 30,
+  "nspt_des": "what's new: \n • all issue fixed",
+  "nspt_url": "https://github.com/jamestom986/Netmovie/releases/download/nspt-v31/NetSports.apk",
+  "website_url": "https://netmovie.site",
+
+ "nthb_ver": "2.2",
+  "nthb_cod": 83,
+  "nthb_des": "what's new: \n • Servers Updated! \n • Smooth Ui!",
+  "nthb_url": "https://github.com/jamestom986/Netmovie/releases/download/Nthub2.2/NetHub_2.2.apk",
+  "website_url": "https://netmovie.site",
+
+"ntanmo_cod" : 1,
+"ntanmo_des" : "NetAnimo testing positive",
+"ntanmo_url" : "https://github.com/jamestom986/Netmovie/releases/download/Ntanm-1.0/NetAnimo-1.0.apk",
+"ntanmo_ver" : "1.0",
+
+"ntdrma_cod" : 1,
+"ntdrma_des" : "netdrama testing positive",
+"ntdrma_url" :  "https://github.com/jamestom986/Netmovie/releases/download/Kdrma-1.1/NetDrama-1.1.apk",
+"ntdrma_ver" : "2.0",
+
+"netmovie_ver": "5.0",
+"netmovie_url": "https://github.com/jamestom986/Netmovie/releases/download/beta-20/NetMovie-2.0.beta.apk",
+"netmovie_cod": 2,
+"netmovie_des": "netmovie testing app",
+"netmovie_force": true,
+
+"nethome_ver": "5.0",
+"nethome_url": "app link we update here",
+"nethome_cod": 2,
+"nethome_des": "nethome testing app",
+"nethome_force": true,
+
+"ad_direct": "https://directyp.org/4/e41420b475d37318a566d81d5aebca16"
+}
+
+}
