@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "site_title": "NetMovie",
+    "description": "",
+    "theme_color": "#06080f"
+  },
+  "maintenance": {
+    "enabled": false,
+    "icon": "🔧",
+    "title": "Under Maintenance",
+    "message": "We'll be back shortly.",
+    "show_telegram": true
+  },
+  "hero": {
+    "brand_name": "Net",
+    "brand_accent": "Movie",
+    "brand_color": "#e8163a",
+    "brand_logo": {
+      "type": "image",
+      "text": "N",
+      "colors": [
+        "#e8163a",
+        "#b8102e"
+      ],
+      "url": "https://raw.githubusercontent.com/netmovieinc-png/loaded/main/assets/logos/xqtfa8c.png"
+    },
+    "title_line1": "Stream Everything.",
+    "title_line2": "Pay Nothing.",
+    "subtitle": "Movies, series, anime, K-drama and live TV — all free, all HD, in Multiple language.",
+    "languages": [
+      "English"
+    ],
+    "features": []
+  },
+  "landing_tiles": [],
+  "landing_groups": [],
+  "sections": [],
+  "footer": {
+    "telegram_url": "",
+    "telegram_text": "Join Telegram",
+    "status_text": "",
+    "copyright": "© NetMovie",
+    "links": []
+  },
+  "remote_fetch": {
+    "url": "https://raw.githubusercontent.com/netmovieinc-png/loaded/refs/heads/main/load",
+    "mappings": []
+  }
+}
