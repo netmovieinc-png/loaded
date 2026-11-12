@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetMovie — Watch Movies, Series, Anime &amp; Live TV Free in HD</title>
+    <meta name="description" content="NetMovie lets you stream movies, TV series, anime, K-drama and live TV online for free in HD. Watch in English, Hindi, Urdu and more languages. No sign-up needed.">
+    <meta name="keywords" content="watch movies online free, free TV shows streaming, HD movies, watch series online, stream movies free, anime streaming, kdrama online, NetMovie, free streaming site, live TV free, web series online">
+    <meta name="author" content="NetMovie">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://netmovie.site/" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NetMovie">
+    <meta property="og:title" content="NetMovie — Watch Movies, Series, Anime &amp; Live TV Free in HD">
+    <meta property="og:description" content="Stream thousands of movies, TV series, anime and K-drama in HD for free. Multiple languages. New titles added daily.">
+    <meta property="og:image" content="https://netmovie.site/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://netmovie.site/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NetMovie — Free HD Movies, Anime &amp; Series Streaming">
+    <meta name="twitter:description" content="Watch movies, series, anime and K-drama online for free in full HD. Multiple languages supported.">
+    <meta name="twitter:image" content="https://netmovie.site/og-image.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="NetMovie" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "url": "https://netmovie.site/",
+                "name": "NetMovie",
+                "description": "Stream movies, TV series, anime and K-drama online for free in HD. Multiple languages supported.",
+                "inLanguage": "en",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://pc.netmovie.site/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "name": "NetMovie",
+                "url": "https://netmovie.site/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://netmovie.site/og-image.png",
+                    "width": 1200,
+                    "height": 630
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "NetMovie App",
+                "operatingSystem": "Android",
+                "applicationCategory": "EntertainmentApplication",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "downloadUrl": "https://github.com/jamestom986/Netmovie/releases/download/v1.3.4/NetMovie-v1.3.4.apk",
+                "softwareVersion": "1.3.4",
+                "description": "Unlimited series, movies, live TV and animations in multiple languages."
+            }
+        ]
+    }
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#06080f;--surface:rgba(12,16,32,.85);--glass:rgba(255,255,255,.025);--white:#eef0f4;--dim:rgba(255,255,255,.55);--muted:rgba(255,255,255,.2);--border:rgba(255,255,255,.06);--blue-tg:#0088cc;--r:16px}
+html{scroll-behavior:smooth}
+body{min-height:100dvh;background:var(--bg);font-family:'Inter',-apple-system,sans-serif;color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(130px)}
+.orb1{width:520px;height:520px;top:-180px;left:-120px;background:#e8163a;opacity:.09;animation:f1 32s ease-in-out infinite}
+.orb2{width:420px;height:420px;bottom:-120px;right:-100px;background:#7c3aed;opacity:.07;animation:f2 38s ease-in-out infinite}
+.orb3{width:320px;height:320px;top:50%;left:50%;transform:translate(-50%,-50%);background:#06b6d4;opacity:.04;animation:f3 28s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,40px) scale(1.1)}66%{transform:translate(-30px,80px) scale(.95)}}
+@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(-70px,-50px)}}
+@keyframes f3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.2)}}
+.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px 128px}
+#boot{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:var(--bg)}
+#boot .dots{display:flex;gap:8px}
+#boot .d{width:11px;height:11px;border-radius:50%;background:#e8163a;animation:bounce .6s ease-in-out infinite}
+#boot .d:nth-child(2){animation-delay:.15s;background:#7c3aed}
+#boot .d:nth-child(3){animation-delay:.3s;background:#06b6d4}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.view{display:none;position:relative;z-index:1}
+.view.active{display:block;animation:fade .5s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.reveal{animation:up .7s cubic-bezier(.16,1,.3,1) both}
+@keyframes up{from{opacity:0;transform:translateY(26px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+.hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 20px 40px;text-align:center}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:44px}
+.brand-mark{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:20px;font-weight:900;color:#fff;overflow:hidden}
+.brand-mark img{width:100%;height:100%;object-fit:cover}
+.brand-name{font-family:'Space Grotesk';font-size:24px;font-weight:700;letter-spacing:-.5px}
+.hero h1{font-family:'Space Grotesk';font-size:clamp(34px,7vw,58px);font-weight:700;letter-spacing:-2px;line-height:1.06;margin-bottom:18px;max-width:640px}
+.grad{background:linear-gradient(100deg,#e8163a,#7c3aed 50%,#06b6d4);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shim 6s ease-in-out infinite}
+@keyframes shim{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.hero-sub{font-size:15px;color:var(--dim);max-width:420px;line-height:1.65;margin-bottom:34px}
+.lang{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+.lang span{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;color:var(--dim);border:1px solid var(--border);background:var(--glass)}
+.feats{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-bottom:50px}
+.feat{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--dim)}
+.feat .fi{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-size:13px}
+.grid{display:grid;gap:14px;max-width:800px;width:100%;margin-bottom:40px}
+.tile{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;text-decoration:none;color:var(--white);background:var(--surface);border:1px solid var(--border);transition:transform .4s cubic-bezier(.22,.68,0,1.1),border-color .3s,box-shadow .4s}
+.tile:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.12)}
+.tile:active{transform:scale(.98)}
+.tile .acc{height:3px;width:100%}
+.tile .bdg{position:absolute;top:10px;right:10px;padding:3px 10px;border-radius:6px;font-size:9px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;z-index:2;color:#fff}
+.tbody{padding:26px 18px 22px;text-align:center}
+.ticon{font-size:38px;margin-bottom:12px;display:block;height:44px;line-height:44px}
+.ticon img{height:44px;width:44px;object-fit:contain;display:inline-block;vertical-align:middle}
+.ttitle{font-family:'Space Grotesk';font-size:16px;font-weight:700;margin-bottom:5px}
+.tsub{font-size:11px;color:var(--dim);line-height:1.5;margin-bottom:16px;min-height:32px}
+.tcta{display:inline-flex;padding:7px 16px;border-radius:8px;font-size:11px;font-weight:700;color:#fff;transition:transform .2s,filter .2s}
+.tile:hover .tcta{transform:scale(1.05);filter:brightness(1.1)}
+.seclabel{font-family:'Space Grotesk';font-size:20px;font-weight:700;text-align:center;margin-bottom:4px;width:100%}
+.secsub{font-size:13px;color:var(--dim);text-align:center;margin-bottom:20px}
+.footer{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:48px}
+.tg{display:inline-flex;align-items:center;gap:10px;padding:10px 24px;border-radius:40px;background:linear-gradient(135deg,var(--blue-tg),#006699);color:#fff;font-size:13px;font-weight:600;text-decoration:none;transition:transform .3s,box-shadow .3s}
+.tg:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,136,204,.3)}
+.tg svg{width:18px;height:18px;fill:#fff}
+.status{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted)}
+.sdot{width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.85)}}
+.flinks{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.flinks a{font-size:11px;color:var(--muted);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--dim)}
+.copy{font-size:10px;color:var(--muted)}
+.dwrap{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 20px}
+.dbox{max-width:680px;width:100%}
+.back{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:28px;background:var(--glass);border:1px solid var(--border);color:var(--dim);font-size:12px;font-weight:600;cursor:pointer;margin-bottom:34px;transition:background .25s,color .25s}
+.back:hover{background:rgba(255,255,255,.06);color:var(--white)}
+.back svg{width:14px;height:14px;fill:currentColor}
+.dtitle{font-family:'Space Grotesk';font-size:clamp(24px,5vw,34px);font-weight:700;letter-spacing:-1px;margin-bottom:6px;text-align:center}
+.dsub{font-size:14px;color:var(--dim);text-align:center;margin-bottom:34px}
+.apps{display:grid;gap:16px;margin-bottom:16px}
+.apps.cols-1{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
+.apps.cols-2{grid-template-columns:1fr 1fr}
+.acard{position:relative;border-radius:var(--r);background:var(--surface);border:1px solid var(--border);padding:30px 18px 22px;text-align:center;transition:transform .35s cubic-bezier(.22,.68,0,1.1),border-color .3s,box-shadow .35s}
+.acard:hover{border-color:rgba(255,255,255,.1);transform:translateY(-4px)}
+.atag{position:absolute;top:-1px;left:50%;transform:translateX(-50%);padding:4px 14px;border-radius:0 0 8px 8px;font-size:9px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;z-index:3;white-space:nowrap}
+.alogo{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;margin:0 auto 14px;font-size:22px;font-weight:900;color:#fff;overflow:hidden}
+.alogo img{width:100%;height:100%;object-fit:cover}
+.alabel{font-family:'Space Grotesk';font-size:17px;font-weight:700;margin-bottom:3px}
+.aver{font-size:11px;color:var(--muted);margin-bottom:14px}
+.afeats{text-align:left;margin-bottom:16px;list-style:none}
+.afeats li{font-size:11.5px;color:var(--dim);padding:4px 0;display:flex;align-items:center;gap:8px}
+.afeats li .ck{font-size:10px;font-weight:800;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.dl{display:block;width:100%;padding:12px 18px;border-radius:11px;font-size:13px;font-weight:800;text-decoration:none;color:#fff;text-align:center;border:none;cursor:pointer;transition:transform .25s,filter .25s}
+.dl:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.dl:active{transform:scale(.97)}
+.dsize{font-size:10px;color:var(--muted);margin-top:7px}
+.divider{display:flex;align-items:center;gap:14px;margin:18px 0;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:1px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.webs{display:grid;gap:12px;margin-bottom:16px}
+.wcard{border-radius:var(--r);background:var(--surface);border:1px solid var(--border);padding:22px;display:flex;align-items:center;gap:18px;position:relative;transition:transform .3s,border-color .3s}
+.wcard:hover{border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
+.wtag{position:absolute;top:-1px;left:18px;padding:4px 14px;border-radius:0 0 8px 8px;font-size:9px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;background:linear-gradient(90deg,#10b981,#34d399);color:#000}
+.wicon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.winfo{flex:1}
+.wititle{font-family:'Space Grotesk';font-size:15px;font-weight:700;margin-bottom:2px}
+.wisub{font-size:11px;color:var(--dim)}
+.wgo{padding:9px 20px;border-radius:9px;background:linear-gradient(135deg,#10b981,#059669);color:#000;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;transition:transform .25s,filter .25s}
+.wgo:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.blk-text{text-align:center;margin:0 auto 18px;max-width:560px}
+.blk-btn-wrap{text-align:center;margin:0 auto 18px}
+@media(max-width:700px){.grid{grid-template-columns:1fr!important;max-width:380px}.apps.cols-2{grid-template-columns:1fr;max-width:380px;margin-left:auto;margin-right:auto}.wcard{flex-direction:column;text-align:center}.wtag{left:50%;transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+#err{display:none;position:fixed;inset:0;z-index:40;place-items:center;text-align:center;padding:30px;background:var(--bg)}
+#err.show{display:grid}
+#err h2{font-family:'Space Grotesk';font-size:22px;margin-bottom:10px}
+#err p{color:var(--dim);font-size:13px;margin-bottom:20px;max-width:320px}
+#err button{padding:10px 26px;border-radius:10px;border:none;background:#e8163a;color:#fff;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="ambient"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="noise"></div>
+<div id="boot"><div class="dots"><div class="d"></div><div class="d"></div><div class="d"></div></div></div>
+<div id="err"><div><h2>Couldn't load</h2><p>We couldn't reach the server. Check your connection and try again.</p><button onclick="location.reload()">Retry</button></div></div>
+<main id="app"></main>
+
+<script>
+const CONFIG_URL = "/site-config.json";
+const REMOTE_URL = "https://raw.githubusercontent.com/netmovieinc-png/loaded/refs/heads/main/load";
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const byOrder=(a,b)=>(a.order||0)-(b.order||0);
+const on=x=>x&&x.enabled!==false;
+let CFG=null;
+
+async function boot(){
+  try{
+    const r=await fetch(CONFIG_URL+'?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('config');
+    CFG=await r.json();
+  }catch(e){
+    document.getElementById('boot').style.display='none';
+    document.getElementById('err').classList.add('show');
+    return;
+  }
+  applyMeta();
+  if(CFG.maintenance && CFG.maintenance.enabled){
+    document.getElementById('boot').style.display='none';
+    showMaintenance(CFG.maintenance);
+    return;
+  }
+  try{ const rr=await fetch(REMOTE_URL+'?t='+Date.now(),{cache:'no-store'}); if(rr.ok) applyRemote(await rr.json()); }catch(e){}
+  render();
+  document.getElementById('boot').style.display='none';
+}
+
+function applyMeta(){
+  const m=CFG.meta||{};
+  if(m.site_title) document.title=m.site_title;
+  const t=document.querySelector('meta[name=theme-color]'); if(t&&m.theme_color) t.content=m.theme_color;
+  const d=document.querySelector('meta[name=description]'); if(d&&m.description) d.content=m.description;
+}
+
+function applyRemote(data){
+  const maps=(CFG.remote_fetch&&CFG.remote_fetch.mappings)||[];
+  maps.forEach(m=>{
+    const val=data[m.json_key];
+    if(val==null||val==='') return;
+    const app=findAppById(m.target_app);
+    if(app){ app[m.field]=val; return; }
+    const tile=findTileById(m.target_app);
+    if(tile){ tile[m.field]=val; }
+  });
+}
+function findAppById(id){
+  for(const s of (CFG.sections||[])){
+    for(const b of (s.blocks||[])) if(b.type==='apps') for(const a of (b.apps||[])) if(a.id===id) return a;
+    for(const a of (s.apps||[])) if(a.id===id) return a; // legacy
+  }
+  return null;
+}
+function findTileById(id){
+  for(const t of (CFG.landing_tiles||[])) if(t.id===id) return t;
+  for(const g of (CFG.landing_groups||[])) for(const t of (g.tiles||[])) if(t.id===id) return t;
+  for(const s of (CFG.sections||[])) for(const b of (s.blocks||[])) if(b.type==='tiles') for(const t of (b.tiles||[])) if(t.id===id) return t;
+  return null;
+}
+
+function showMaintenance(m){
+  const tg=(m.show_telegram&&CFG.footer&&CFG.footer.telegram_url)?`
+    <a href="${esc(CFG.footer.telegram_url)}" target="_blank" rel="noopener" class="tg" style="margin-top:24px">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      ${esc(CFG.footer.telegram_text||'Join Telegram')}</a>`:'';
+  document.getElementById('app').innerHTML=`
+    <div style="min-height:100dvh;display:grid;place-items:center;text-align:center;padding:30px;position:relative;z-index:1">
+      <div style="max-width:420px">
+        <div style="font-size:64px;margin-bottom:16px">${esc(m.icon||'🔧')}</div>
+        <h1 style="font-family:'Space Grotesk';font-size:28px;margin-bottom:12px">${esc(m.title||'Under Maintenance')}</h1>
+        <p style="color:var(--dim);font-size:14px;line-height:1.7">${esc(m.message||"We'll be back shortly.")}</p>
+        ${tg}
+      </div>
+    </div>`;
+}
+
+function render(){
+  document.getElementById('app').innerHTML=renderLanding()+(CFG.sections||[]).filter(on).sort(byOrder).map(renderSection).join('');
+  showView('landing');
+}
+
+/* ---- logo helper: text badge OR image ---- */
+function logoHtml(logo, legacyText, legacyColors, size){
+  const sz=size||58, rad=size?13:15;
+  if(logo && logo.type==='image' && logo.url){
+    return `<img src="${esc(logo.url)}" alt="">`;
+  }
+  // text (from logo obj, or legacy flat fields)
+  const txt = logo && logo.type==='text' ? logo.text : legacyText;
+  return esc(txt||'');
+}
+function logoStyle(logo, legacyColors){
+  if(logo && logo.type==='image' && logo.url) return '';
+  const c = (logo && logo.colors) || legacyColors || ['#333','#111'];
+  return `background:linear-gradient(135deg,${esc(c[0])},${esc(c[1]||c[0])})`;
+}
+
+function renderLanding(){
+  const h=CFG.hero||{}, f=CFG.footer||{};
+  const bl=h.brand_logo;
+  const brandInner = (bl&&bl.type==='image'&&bl.url)?`<img src="${esc(bl.url)}" alt="">`:esc((bl&&bl.text)||h.brand_logo_text||'N');
+  const brandStyle = (bl&&bl.type==='image'&&bl.url)?'':`background:linear-gradient(135deg,${esc(h.brand_color||'#e8163a')},#b8102e)`;
+  const tiles=(CFG.landing_tiles||[]).filter(on).sort(byOrder).map(renderTile).join('');
+  const groups=(CFG.landing_groups||[]).filter(on).sort(byOrder).map(renderGroup).join('');
+  const langs=(h.languages||[]).map(l=>`<span>${esc(l)}</span>`).join('');
+  const feats=(h.features||[]).map(ft=>`<div class="feat"><div class="fi" style="background:${esc(ft.bg||'rgba(255,255,255,.08)')}">${esc(ft.icon)}</div>${esc(ft.label)}</div>`).join('');
+  const flinks=(f.links||[]).filter(l=>l.url).map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('');
+  const nCols=Math.min(3,(CFG.landing_tiles||[]).filter(on).length)||1;
+  return `
+  <section class="view" id="landing">
+    <div class="hero">
+      <div class="brand reveal">
+        <div class="brand-mark" style="${brandStyle}">${brandInner}</div>
+        <div class="brand-name">${esc(h.brand_name||'Net')}<span style="color:${esc(h.brand_color||'#e8163a')}">${esc(h.brand_accent||'Movie')}</span></div>
+      </div>
+      <h1 class="reveal">${esc(h.title_line1||'')}<br><span class="grad">${esc(h.title_line2||'')}</span></h1>
+      <p class="hero-sub reveal">${esc(h.subtitle||'')}</p>
+      ${langs?`<div class="lang reveal">${langs}</div>`:''}
+      ${feats?`<div class="feats reveal">${feats}</div>`:''}
+      ${tiles?`<nav class="grid reveal" style="grid-template-columns:repeat(${nCols},1fr)">${tiles}</nav>`:''}
+      ${groups}
+      <div class="footer reveal">
+        ${f.telegram_url?`<a href="${esc(f.telegram_url)}" target="_blank" rel="noopener" class="tg"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>${esc(f.telegram_text||'Join Telegram')}</a>`:''}
+        ${f.status_text?`<div class="status"><span class="sdot"></span>${esc(f.status_text)}</div>`:''}
+        ${flinks?`<div class="flinks">${flinks}</div>`:''}
+        ${f.copyright?`<div class="copy">${esc(f.copyright)}</div>`:''}
+      </div>
+    </div>
+  </section>`;
+}
+
+function tileIcon(t){
+  if(t.icon_type==='image'&&t.icon_img) return `<img src="${esc(t.icon_img)}" alt="">`;
+  return esc(t.icon||'');
+}
+function renderTile(t){
+  const act=t.action_type==='link'?`href="${esc(t.action_target||'#')}" target="_blank" rel="noopener"`:`onclick="showView('${esc(t.action_target)}')"`;
+  const tag=t.action_type==='link'?'a':'div';
+  return `<${tag} class="tile" ${act} style="cursor:pointer">
+    <div class="acc" style="background:linear-gradient(90deg,${esc(t.color)},${esc(t.gradient_end||t.color)})"></div>
+    ${t.badge_text?`<span class="bdg" style="background:${esc(t.badge_color||t.color)}">${esc(t.badge_text)}</span>`:''}
+    <div class="tbody"><span class="ticon">${tileIcon(t)}</span>
+      <div class="ttitle">${esc(t.title)}</div>
+      <div class="tsub">${esc(t.subtitle)}</div>
+      <span class="tcta" style="background:linear-gradient(135deg,${esc(t.color)},${esc(t.gradient_end||t.color)})">${esc(t.cta_text||'Open ›')}</span>
+    </div></${tag}>`;
+}
+function renderGroup(g){
+  const tiles=(g.tiles||[]).filter(on).sort(byOrder).map(renderTile).join('');
+  return `${g.title?`<div class="seclabel reveal">${esc(g.title)}</div>`:''}${g.subtitle?`<div class="secsub reveal">${esc(g.subtitle)}</div>`:''}<nav class="grid reveal" style="grid-template-columns:repeat(${g.columns||2},1fr);max-width:540px">${tiles}</nav>`;
+}
+
+function renderSection(s){
+  let body='';
+  if(Array.isArray(s.blocks)&&s.blocks.length){
+    body=s.blocks.filter(on).sort(byOrder).map(renderBlock).join('');
+  }else{
+    const apps=(s.apps||[]).filter(on).sort(byOrder);
+    const webs=(s.web_links||[]).filter(on).sort(byOrder);
+    const cols=apps.length>=2?2:1;
+    body=(apps.length?`<div class="apps cols-${cols}">${apps.map(renderApp).join('')}</div>`:'')
+       +(webs.length?`<div class="divider">OR</div><div class="webs">${webs.map(renderWeb).join('')}</div>`:'');
+  }
+  return `<section class="view" id="${esc(s.id)}"><div class="dwrap"><div class="dbox">
+    <button class="back" onclick="showView('landing')"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>Back</button>
+    <div class="dtitle">${esc(s.title)}</div>${s.subtitle?`<div class="dsub">${esc(s.subtitle)}</div>`:''}${body}
+  </div></div></section>`;
+}
+
+function renderBlock(b){
+  switch(b.type){
+    case 'apps':{const apps=(b.apps||[]).filter(on).sort(byOrder);const cols=apps.length>=2?2:1;return apps.length?`<div class="apps cols-${cols}">${apps.map(renderApp).join('')}</div>`:'';}
+    case 'webs':{const webs=(b.webs||[]).filter(on).sort(byOrder);return webs.length?`<div class="webs">${webs.map(renderWeb).join('')}</div>`:'';}
+    case 'tiles':{const tiles=(b.tiles||[]).filter(on).sort(byOrder);return tiles.length?`<nav class="grid" style="grid-template-columns:repeat(${b.columns||2},1fr);max-width:600px;margin:0 auto 16px">${tiles.map(renderTile).join('')}</nav>`:'';}
+    case 'text':return `<div class="blk-text">${b.heading?`<div class="seclabel" style="margin-bottom:8px">${esc(b.heading)}</div>`:''}${b.body?`<p style="color:var(--dim);font-size:14px;line-height:1.7">${esc(b.body)}</p>`:''}</div>`;
+    case 'button':{const c=b.colors||['#e8163a','#b8102e'];return `<div class="blk-btn-wrap"><a href="${esc(b.url||'#')}" ${b.new_tab!==false?'target="_blank" rel="noopener"':''} class="dl" style="display:inline-block;width:auto;padding:13px 32px;background:linear-gradient(135deg,${esc(c[0])},${esc(c[1]||c[0])})">${esc(b.text||'Open')}</a></div>`;}
+    case 'divider':return `<div class="divider">${esc(b.label||'OR')}</div>`;
+    default:return '';
+  }
+}
+
+function renderApp(a){
+  const bc=a.badge_colors||['#e8163a','#f43f5e'];
+  const bt=a.btn_colors||['#e8163a','#b8102e'];
+  const feats=(a.features||[]).map(ft=>`<li><span class="ck" style="background:${esc(a.feature_check_bg||'rgba(255,255,255,.08)')};color:${esc(a.feature_check_color||'#fff')}">✓</span>${esc(ft)}</li>`).join('');
+  const href=a.download_url&&a.download_url.trim()?esc(a.download_url):'#';
+  return `<div class="acard">
+    ${a.badge_text?`<div class="atag" style="background:linear-gradient(90deg,${esc(bc[0])},${esc(bc[1]||bc[0])});color:${esc(a.badge_text_color||'#fff')}">${esc(a.badge_text)}</div>`:''}
+    <div class="alogo" style="${logoStyle(a.logo,a.logo_colors)}">${logoHtml(a.logo,a.logo_text)}</div>
+    <div class="alabel">${esc(a.name)}</div>
+    <div class="aver">v${esc(a.version||'')}</div>
+    ${feats?`<ul class="afeats">${feats}</ul>`:''}
+    <a href="${href}" class="dl" style="background:linear-gradient(135deg,${esc(bt[0])},${esc(bt[1]||bt[0])});color:${esc(a.btn_text_color||'#fff')}"${href==='#'?' onclick="return false"':''}>${esc(a.btn_text||'Download APK')}</a>
+    <div class="dsize">${esc(a.size_text||'Android · Free')}</div>
+  </div>`;
+}
+function renderWeb(w){
+  return `<div class="wcard">${w.badge?`<div class="wtag">${esc(w.badge)}</div>`:''}<div class="wicon">${esc(w.icon||'🌐')}</div><div class="winfo"><div class="wititle">${esc(w.name)}</div><div class="wisub">${esc(w.description||'')}</div></div><a href="${esc(w.url)}" class="wgo" target="_blank" rel="noopener">${esc(w.btn_text||'Open ›')}</a></div>`;
+}
+
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const t=document.getElementById(id);
+  if(t){ t.querySelectorAll('.reveal').forEach(el=>{el.style.animation='none';el.offsetHeight;el.style.animation='';}); t.classList.add('active'); }
+  window.scrollTo({top:0,behavior:'instant'});
+}
+window.showView=showView;
+boot();
+</script>
+</body>
+</html>
