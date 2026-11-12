@@ -174,9 +174,8 @@ $('fileInput').addEventListener('change',async function(){
     const r=await fetch(url,{method:'PUT',headers:{Authorization:'token '+GH.token,Accept:'application/vnd.github+json'},
       body:JSON.stringify({message:'upload logo '+path,content:b64,branch:GH.branch})});
     if(!r.ok){const t=await r.text();throw new Error('GitHub '+r.status+' '+t.slice(0,100));}
-    // build a raw URL the public site can load
-    const rawUrl=`https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/${path}`;
-    uploadCb(rawUrl);uploadCb=null;toast('Image uploaded ✓','ok');touch();
+const siteUrl = `https://www.netmovie.site/${path}`;
+uploadCb(siteUrl);uploadCb=null;toast('Image uploaded ✓','ok');touch();
   }catch(e){toast('Upload failed: '+e.message,'err');uploadCb=null;}
 });
 function fileToB64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});}
