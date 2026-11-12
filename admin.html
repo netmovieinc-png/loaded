@@ -130,12 +130,33 @@ async function loadConfig(){
   try{
     const url=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${encodeURIComponent(GH.path)}?ref=${GH.branch}&t=${Date.now()}`;
     const r=await fetch(url,{headers:{Authorization:'token '+GH.token,Accept:'application/vnd.github+json'}});
-    if(r.status===404){CFG=defaultConfig();SHA=null;enterApp();toast('New config (created on save)','ok');return;}
+
+    if(r.status===401 || r.status===403){
+      $('gate_err').textContent='Token rejected or no access to this repo. Check your token.';
+      return;
+    }
+    if(r.status===404){
+      const ok=confirm(
+        'No file found at:\n'+GH.owner+'/'+GH.repo+' → '+GH.path+'\n\n'+
+        'This almost always means a wrong owner, repo, branch, or path.\n\n'+
+        'Click Cancel to go back and fix it.\n'+
+        'Click OK ONLY if you truly want to create a brand-new empty config here.'
+      );
+      if(ok){ CFG=defaultConfig(); SHA=null; enterApp(); toast('New EMPTY config — will be created on save','err'); }
+      else { $('gate_err').textContent='File not found — check owner, repo, branch and path.'; }
+      return;
+    }
     if(!r.ok) throw new Error('GitHub '+r.status);
-    const d=await r.json();SHA=d.sha;
+
+    const d=await r.json();
+    SHA=d.sha;
     CFG=JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,'')))));
+    // sanity: warn if the loaded config looks empty
+    if((!CFG.sections||!CFG.sections.length) && (!CFG.landing_tiles||!CFG.landing_tiles.length)){
+      toast('⚠ Loaded config has no sections — are you on the right file?','err');
+    }
     enterApp();
-  }catch(e){$('gate_err').textContent='Failed: '+e.message;}
+  }catch(e){ $('gate_err').textContent='Failed: '+e.message; }
 }
 function enterApp(){
   $('gate').style.display='none';$('topbar').style.display='flex';$('main').style.display='block';
