@@ -431,7 +431,7 @@
     ]
   },
   "maintenance": {
-    "enabled": true,
+    "enabled": false,
     "icon": "🔧",
     "title": "Under Maintenance",
     "message": "Our website is currently undergoing maintenance. We'll be back online in a few hours. Thank you for your patience!",
