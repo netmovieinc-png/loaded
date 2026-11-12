@@ -13,7 +13,7 @@
     "brand_logo_text": "N",
     "title_line1": "Stream Everything.",
     "title_line2": "Pay Nothing.",
-    "subtitle": "Movies, series, anime, K-drama and live TV — all free, all HD, in your language.",
+    "subtitle": "Movies, series, anime, K-drama and live TV — all free, all HD, in Multiple language.",
     "languages": [
       "English",
       "Hindi",
@@ -429,5 +429,12 @@
         "field": "version"
       }
     ]
+  },
+  "maintenance": {
+    "enabled": true,
+    "icon": "🔧",
+    "title": "Under Maintenance",
+    "message": "Our website is currently undergoing maintenance. We'll be back online in a few hours. Thank you for your patience!",
+    "show_telegram": true
   }
 }
