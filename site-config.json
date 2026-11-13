@@ -196,7 +196,7 @@
               ],
               "feature_check_color": "#ece646",
               "feature_check_bg": "#ecde46",
-              "enabled": false,
+              "enabled": true,
               "order": 3
             },
             {
