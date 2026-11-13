@@ -522,12 +522,12 @@
       },
       {
         "json_key": "netmovie_url",
-        "target_app": "",
+        "target_app": "netmovie",
         "field": "download_url"
       },
       {
         "json_key": "netmovie_ver",
-        "target_app": "",
+        "target_app": "netmovie",
         "field": "version"
       }
     ]
