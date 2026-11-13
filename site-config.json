@@ -376,8 +376,8 @@
               "description": "Full NetMovie experience in your browser",
               "badge": "NetMovie",
               "icon": "🎬",
-              "icon_type": "emoji",
-              "icon_img": "",
+              "icon_type": "image",
+              "icon_img": "https://raw.githubusercontent.com/netmovieinc-png/loaded/main/assets/logos/xf9r3xj.png",
               "btn_text": "Visit ›",
               "enabled": true,
               "order": 1
@@ -389,8 +389,8 @@
               "description": "Fast streaming on any device — iOS, PC, Mac, any browser",
               "badge": "NetStream",
               "icon": "⚡",
-              "icon_type": "emoji",
-              "icon_img": "",
+              "icon_type": "image",
+              "icon_img": "https://raw.githubusercontent.com/netmovieinc-png/loaded/main/assets/logos/xdjo5a1.png",
               "btn_text": "Visit ›",
               "enabled": true,
               "order": 2
@@ -402,8 +402,8 @@
               "description": "Anime streaming — sub, dub & Hindi dubbed",
               "badge": "NetAnimo",
               "icon": "⛩️",
-              "icon_type": "emoji",
-              "icon_img": "",
+              "icon_type": "image",
+              "icon_img": "https://raw.githubusercontent.com/netmovieinc-png/loaded/main/assets/logos/xwi6r8b.png",
               "btn_text": "Visit ›",
               "enabled": true,
               "order": 3
