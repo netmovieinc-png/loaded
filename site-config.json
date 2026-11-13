@@ -174,16 +174,16 @@
               },
               "badge_text": "🇰🇷 K-Drama",
               "badge_colors": [
-                "#e8163a",
-                "#ecf575"
+                "#ec4646",
+                "#f57575"
               ],
               "badge_text_color": "#fff",
               "version": "2.0",
               "download_url": "",
               "btn_text": "Download APK",
               "btn_colors": [
-                "#ecc846",
-                "#dbd529"
+                "#ec4646",
+                "#db2929"
               ],
               "btn_text_color": "#fff",
               "size_text": "Android · Free",
@@ -194,8 +194,8 @@
                 "Multi-Audio",
                 "Eng Subs"
               ],
-              "feature_check_color": "#e8163a",
-              "feature_check_bg": "#ecde46",
+              "feature_check_color": "#ec4646",
+              "feature_check_bg": "#ec4646",
               "enabled": true,
               "order": 3
             },
