@@ -39,7 +39,7 @@
 "netmovie_force": true,
 
 "nethome_ver": "5.0",
-"nethome_url": "app link we update here",
+"nethome_url": "https://github.com/Rano999/moviepg/releases/download/nethome2/NetHome-2.0.apk",
 "nethome_cod": 2,
 "nethome_des": "nethome testing app",
 "nethome_force": true,
