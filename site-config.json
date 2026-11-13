@@ -174,7 +174,7 @@
               },
               "badge_text": "🇰🇷 K-Drama",
               "badge_colors": [
-                "#ecc846",
+                "#e8163a",
                 "#ecf575"
               ],
               "badge_text_color": "#fff",
@@ -194,7 +194,7 @@
                 "Multi-Audio",
                 "Eng Subs"
               ],
-              "feature_check_color": "#ece646",
+              "feature_check_color": "#e8163a",
               "feature_check_bg": "#ecde46",
               "enabled": true,
               "order": 3
