@@ -652,8 +652,6 @@ function initReveal(){
 function initNav(){const nav=document.getElementById('mainNav');if(!nav)return;window.addEventListener('scroll',()=>{if(window.pageYOffset>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');},{passive:true});}
 function initParticles(){const c=document.getElementById('particles');if(!c||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=Math.random()*10+'s';p.style.width=p.style.height=(1+Math.random()*2)+'px';c.appendChild(p);}}
 
-boot();
-
   /* ═══ POPUP NOTICE ═══ */
 function showNotice(){
   if(localStorage.getItem('notice_dismissed')){
@@ -683,7 +681,10 @@ function dismissNotice(){
   const o=document.getElementById('noticeOverlay');
   if(o){o.classList.remove('show');setTimeout(()=>o.remove(),350);}
 }
+
+ boot().then(()=>{ setTimeout(showNotice, 1500); }); 
 window.dismissNotice=dismissNotice;
+  
 </script>
 </body>
 </html>
