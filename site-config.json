@@ -6,6 +6,7 @@
     "og_image": "https://netmovie.site/og-image.png",
     "favicon": "/favicon.svg"
   },
+
   "maintenance": {
     "enabled": false,
     "icon": "🔧",
@@ -13,161 +14,24 @@
     "message": "We'll be back shortly. Follow our Telegram for live updates.",
     "show_telegram": true
   },
+
   "hero": {
     "brand_name": "Net",
     "brand_accent": "Movie",
     "brand_color": "#e8163a",
-    "brand_logo": {
-      "type": "image",
-      "text": "N",
-      "colors": [
-        "#e8163a",
-        "#b8102e"
-      ],
-      "url": "https://www.netmovie.site/assets/logos/xqtfa8c.png"
-    },
+    "brand_logo": { "type": "text", "text": "N", "colors": ["#e8163a", "#b8102e"], "url": "" },
     "title_line1": "Stream Everything.",
     "title_line2": "Pay Nothing.",
     "subtitle": "Movies, series, anime, K-drama and live TV — all free, all HD, in your language.",
-    "languages": [
-      "English",
-      "Hindi",
-      "Urdu",
-      "Korean",
-      "Japanese",
-      "Turkish",
-      "+ More"
-    ],
+    "languages": ["English", "Hindi", "Urdu", "Korean", "Japanese", "Turkish", "+ More"],
     "features": [
-      {
-        "icon": "🚫",
-        "icon_type": "emoji",
-        "icon_img": "",
-        "label": "No Ads",
-        "bg": "rgba(232,22,58,0.15)"
-      },
-      {
-        "icon": "⚡",
-        "icon_type": "emoji",
-        "icon_img": "",
-        "label": "Zero Buffer",
-        "bg": "rgba(16,185,129,0.15)"
-      },
-      {
-        "icon": "🌐",
-        "icon_type": "emoji",
-        "icon_img": "",
-        "label": "Multi Servers",
-        "bg": "rgba(124,58,237,0.15)"
-      },
-      {
-        "icon": "🗣️",
-        "icon_type": "emoji",
-        "icon_img": "",
-        "label": "10+ Languages",
-        "bg": "rgba(6,182,212,0.15)"
-      }
+      { "icon": "🚫", "icon_type": "emoji", "icon_img": "", "label": "No Ads", "bg": "rgba(232,22,58,0.15)" },
+      { "icon": "⚡", "icon_type": "emoji", "icon_img": "", "label": "Zero Buffer", "bg": "rgba(16,185,129,0.15)" },
+      { "icon": "🌐", "icon_type": "emoji", "icon_img": "", "label": "Multi Servers", "bg": "rgba(124,58,237,0.15)" },
+      { "icon": "🗣️", "icon_type": "emoji", "icon_img": "", "label": "10+ Languages", "bg": "rgba(6,182,212,0.15)" }
     ]
   },
-  "landing_tiles": [
-    {
-      "id": "movies",
-      "icon": "🎬",
-      "icon_type": "image",
-      "icon_img": "https://www.netmovie.site/assets/logos/xgubjtz.png",
-      "title": "Everything",
-      "subtitle": "Hollywood, Bollywood, Web Series & More",
-      "color": "#e8163a",
-      "gradient_end": "#f43f5e",
-      "badge_text": "★ Popular",
-      "badge_color": "#e8163a",
-      "cta_text": "Download ›",
-      "action_type": "link",
-      "action_target": "",
-      "enabled": true,
-      "order": 1
-    },
-    {
-      "id": "anime",
-      "icon": "⛩️",
-      "icon_type": "image",
-      "icon_img": "https://www.netmovie.site/assets/logos/x5sca8a.png",
-      "title": "Anime",
-      "subtitle": "Sub & Dub, Hindi Dubbed, All Genres",
-      "color": "#7c3aed",
-      "gradient_end": "#5b21b6",
-      "badge_text": "New ✦",
-      "badge_color": "#7c3aed",
-      "cta_text": "Download ›",
-      "action_type": "link",
-      "action_target": "",
-      "enabled": true,
-      "order": 2
-    },
-    {
-      "id": "kdrama",
-      "icon": "🇰🇷",
-      "icon_type": "image",
-      "icon_img": "https://www.netmovie.site/assets/logos/xu5qp6e.png",
-      "title": "K-Drama",
-      "subtitle": "Korean, Chinese & Japanese Dramas",
-      "color": "#f59e0b",
-      "gradient_end": "#d97706",
-      "badge_text": "Hit",
-      "badge_color": "#f59e0b",
-      "cta_text": "Download ›",
-      "action_type": "link",
-      "action_target": "",
-      "enabled": true,
-      "order": 3
-    }
-  ],
-  "landing_groups": [
-    {
-      "id": "livetv_sports",
-      "title": "For Live TV & Sports Lovers",
-      "subtitle": "Stream channels and matches in real time",
-      "columns": 2,
-      "enabled": true,
-      "order": 1,
-      "tiles": [
-        {
-          "id": "livetv",
-          "icon": "📺",
-          "icon_type": "emoji",
-          "icon_img": "",
-          "title": "NetTV",
-          "subtitle": "Live Sports · Zero Ads · 500+ channels",
-          "color": "#10b981",
-          "gradient_end": "#059669",
-          "badge_text": "★ Best",
-          "badge_color": "#10b981",
-          "cta_text": "Download ›",
-          "action_type": "link",
-          "action_target": "",
-          "enabled": true,
-          "order": 1
-        },
-        {
-          "id": "sports",
-          "icon": "⚽",
-          "icon_type": "emoji",
-          "icon_img": "",
-          "title": "NetSports",
-          "subtitle": "Cricket, Football, UFC & more live",
-          "color": "#06b6d4",
-          "gradient_end": "#0891b2",
-          "badge_text": "+ Plus",
-          "badge_color": "#06b6d4",
-          "cta_text": "Download ›",
-          "action_type": "link",
-          "action_target": "",
-          "enabled": true,
-          "order": 2
-        }
-      ]
-    }
-  ],
+
   "sections": [
     {
       "id": "downloads",
@@ -185,36 +49,17 @@
             {
               "id": "netmovie",
               "name": "NetMovie",
-              "logo": {
-                "type": "text",
-                "text": "N",
-                "colors": [
-                  "#e8163a",
-                  "#b8102e"
-                ],
-                "url": ""
-              },
+              "logo": { "type": "text", "text": "N", "colors": ["#e8163a", "#b8102e"], "url": "" },
               "badge_text": "🔥 Ultra Edition",
-              "badge_colors": [
-                "#e8163a",
-                "#f59e0b"
-              ],
+              "badge_colors": ["#e8163a", "#f59e0b"],
               "badge_text_color": "#fff",
               "version": "5.0",
               "download_url": "",
               "btn_text": "Download APK",
-              "btn_colors": [
-                "#e8163a",
-                "#b8102e"
-              ],
+              "btn_colors": ["#e8163a", "#b8102e"],
               "btn_text_color": "#fff",
               "size_text": "Android · Free",
-              "features": [
-                "Movies & TV Series",
-                "Live TV & Sports",
-                "Download for offline",
-                "Multi-language subs"
-              ],
+              "features": ["Movies & TV Series", "Live TV & Sports", "Download for offline", "Multi-language subs"],
               "feature_check_color": "#e8163a",
               "feature_check_bg": "rgba(232,22,58,0.15)",
               "enabled": true,
@@ -223,268 +68,116 @@
             {
               "id": "netanimo",
               "name": "NetAnimo",
-              "logo": {
-                "type": "text",
-                "text": "A",
-                "colors": [
-                  "#7c3aed",
-                  "#5b21b6"
-                ],
-                "url": ""
-              },
+              "logo": { "type": "text", "text": "A", "colors": ["#7c3aed", "#5b21b6"], "url": "" },
               "badge_text": "★ Anime Hub",
-              "badge_colors": [
-                "#7c3aed",
-                "#a855f7"
-              ],
+              "badge_colors": ["#7c3aed", "#a855f7"],
               "badge_text_color": "#fff",
               "version": "1.0",
               "download_url": "",
               "btn_text": "Download APK",
-              "btn_colors": [
-                "#7c3aed",
-                "#5b21b6"
-              ],
+              "btn_colors": ["#7c3aed", "#5b21b6"],
               "btn_text_color": "#fff",
               "size_text": "Android · Free",
-              "features": [
-                "Sub & Dub anime",
-                "Hindi dubbed anime",
-                "All genres covered",
-                "Daily new episodes"
-              ],
+              "features": ["Sub & Dub anime", "Hindi dubbed anime", "All genres covered", "Daily new episodes"],
               "feature_check_color": "#7c3aed",
               "feature_check_bg": "rgba(124,58,237,0.15)",
               "enabled": true,
               "order": 2
             },
             {
-              "id": "netstream",
-              "name": "NetStream",
-              "logo": {
-                "type": "text",
-                "text": "S",
-                "colors": [
-                  "#06b6d4",
-                  "#0891b2"
-                ],
-                "url": ""
-              },
-              "badge_text": "⚡ Fast",
-              "badge_colors": [
-                "#06b6d4",
-                "#22d3ee"
-              ],
-              "badge_text_color": "#000",
-              "version": "23.1.0",
-              "download_url": "",
-              "btn_text": "Download APK",
-              "btn_colors": [
-                "#06b6d4",
-                "#0891b2"
-              ],
-              "btn_text_color": "#fff",
-              "size_text": "Android · Free",
-              "features": [
-                "Premium streaming",
-                "Faster servers",
-                "Built-in player",
-                "Zero ads"
-              ],
-              "feature_check_color": "#06b6d4",
-              "feature_check_bg": "rgba(6,182,212,0.15)",
-              "enabled": true,
-              "order": 3
-            },
-            {
-              "id": "nethome",
-              "name": "NetHome",
-              "logo": {
-                "type": "text",
-                "text": "H",
-                "colors": [
-                  "#f59e0b",
-                  "#d97706"
-                ],
-                "url": ""
-              },
-              "badge_text": "🏠 All-in-One",
-              "badge_colors": [
-                "#f59e0b",
-                "#fbbf24"
-              ],
-              "badge_text_color": "#000",
-              "version": "5.0",
-              "download_url": "",
-              "btn_text": "Download APK",
-              "btn_colors": [
-                "#f59e0b",
-                "#d97706"
-              ],
-              "btn_text_color": "#000",
-              "size_text": "Android · Free",
-              "features": [
-                "Movies & series",
-                "Live TV channels",
-                "Simple interface",
-                "Lightweight app"
-              ],
-              "feature_check_color": "#f59e0b",
-              "feature_check_bg": "rgba(245,158,11,0.15)",
-              "enabled": true,
-              "order": 4
-            },
-            {
               "id": "netdrama",
               "name": "NetDrama",
-              "logo": {
-                "type": "text",
-                "text": "D",
-                "colors": [
-                  "#ec4899",
-                  "#db2777"
-                ],
-                "url": ""
-              },
+              "logo": { "type": "text", "text": "D", "colors": ["#ec4899", "#db2777"], "url": "" },
               "badge_text": "🇰🇷 K-Drama",
-              "badge_colors": [
-                "#ec4899",
-                "#f472b6"
-              ],
+              "badge_colors": ["#ec4899", "#f472b6"],
               "badge_text_color": "#fff",
               "version": "2.0",
               "download_url": "",
               "btn_text": "Download APK",
-              "btn_colors": [
-                "#ec4899",
-                "#db2777"
-              ],
+              "btn_colors": ["#ec4899", "#db2777"],
               "btn_text_color": "#fff",
               "size_text": "Android · Free",
-              "features": [
-                "Korean dramas",
-                "Chinese dramas",
-                "Japanese dramas",
-                "Hindi subtitles"
-              ],
+              "features": ["Korean dramas", "Chinese dramas", "Japanese dramas", "Hindi subtitles"],
               "feature_check_color": "#ec4899",
               "feature_check_bg": "rgba(236,72,153,0.15)",
               "enabled": true,
-              "order": 5
-            },
-            {
-              "id": "netsports",
-              "name": "NetSports",
-              "logo": {
-                "type": "text",
-                "text": "SP",
-                "colors": [
-                  "#06b6d4",
-                  "#0891b2"
-                ],
-                "url": ""
-              },
-              "badge_text": "+ Plus Edition",
-              "badge_colors": [
-                "#06b6d4",
-                "#22d3ee"
-              ],
-              "badge_text_color": "#000",
-              "version": "31",
-              "download_url": "",
-              "btn_text": "Download APK",
-              "btn_colors": [
-                "#06b6d4",
-                "#0891b2"
-              ],
-              "btn_text_color": "#fff",
-              "size_text": "Android · Free",
-              "features": [
-                "Live cricket & football",
-                "UFC & boxing",
-                "HD streaming",
-                "Match alerts"
-              ],
-              "feature_check_color": "#06b6d4",
-              "feature_check_bg": "rgba(6,182,212,0.15)",
-              "enabled": true,
-              "order": 6
+              "order": 3
             },
             {
               "id": "nettv",
               "name": "NetTV",
-              "logo": {
-                "type": "text",
-                "text": "TV",
-                "colors": [
-                  "#10b981",
-                  "#059669"
-                ],
-                "url": ""
-              },
+              "logo": { "type": "text", "text": "TV", "colors": ["#10b981", "#059669"], "url": "" },
               "badge_text": "★ Recommended",
-              "badge_colors": [
-                "#e8163a",
-                "#f43f5e"
-              ],
+              "badge_colors": ["#e8163a", "#f43f5e"],
               "badge_text_color": "#fff",
               "version": "7.0",
               "download_url": "",
               "btn_text": "Download APK",
-              "btn_colors": [
-                "#10b981",
-                "#059669"
-              ],
+              "btn_colors": ["#10b981", "#059669"],
               "btn_text_color": "#fff",
               "size_text": "Android · Free",
-              "features": [
-                "500+ live channels",
-                "Sports channels",
-                "News & entertainment",
-                "Zero ads"
-              ],
+              "features": ["500+ live channels", "Sports channels", "News & entertainment", "Zero ads"],
               "feature_check_color": "#10b981",
               "feature_check_bg": "rgba(16,185,129,0.15)",
               "enabled": true,
-              "order": 7
+              "order": 4
+            },
+            {
+              "id": "netsports",
+              "name": "NetSports",
+              "logo": { "type": "text", "text": "SP", "colors": ["#06b6d4", "#0891b2"], "url": "" },
+              "badge_text": "+ Plus Edition",
+              "badge_colors": ["#06b6d4", "#22d3ee"],
+              "badge_text_color": "#000",
+              "version": "31",
+              "download_url": "",
+              "btn_text": "Download APK",
+              "btn_colors": ["#06b6d4", "#0891b2"],
+              "btn_text_color": "#fff",
+              "size_text": "Android · Free",
+              "features": ["Live cricket & football", "UFC & boxing", "HD streaming", "Match alerts"],
+              "feature_check_color": "#06b6d4",
+              "feature_check_bg": "rgba(6,182,212,0.15)",
+              "enabled": true,
+              "order": 5
+            },
+            {
+              "id": "nethome",
+              "name": "NetHome",
+              "logo": { "type": "text", "text": "H", "colors": ["#f59e0b", "#d97706"], "url": "" },
+              "badge_text": "🏠 All-in-One",
+              "badge_colors": ["#f59e0b", "#fbbf24"],
+              "badge_text_color": "#000",
+              "version": "5.0",
+              "download_url": "",
+              "btn_text": "Download APK",
+              "btn_colors": ["#f59e0b", "#d97706"],
+              "btn_text_color": "#000",
+              "size_text": "Android · Free",
+              "features": ["Movies & series", "Live TV channels", "Simple interface", "Lightweight app"],
+              "feature_check_color": "#f59e0b",
+              "feature_check_bg": "rgba(245,158,11,0.15)",
+              "enabled": true,
+              "order": 6
             },
             {
               "id": "nethub",
               "name": "NetHub",
-              "logo": {
-                "type": "text",
-                "text": "HB",
-                "colors": [
-                  "#7c3aed",
-                  "#5b21b6"
-                ],
-                "url": ""
-              },
+              "logo": { "type": "text", "text": "HB", "colors": ["#7c3aed", "#5b21b6"], "url": "" },
               "badge_text": "★ Recommended",
-              "badge_colors": [
-                "#e8163a",
-                "#f43f5e"
-              ],
+              "badge_colors": ["#e8163a", "#f43f5e"],
               "badge_text_color": "#fff",
               "version": "2.2",
               "download_url": "",
               "btn_text": "Download APK",
-              "btn_colors": [
-                "#7c3aed",
-                "#5b21b6"
-              ],
+              "btn_colors": ["#7c3aed", "#5b21b6"],
               "btn_text_color": "#fff",
               "size_text": "Android · Free",
-              "features": [
-                "Premium streaming",
-                "Extended library",
-                "Faster servers",
-                "Built-in player"
-              ],
+              "features": ["Premium streaming", "Extended library", "Faster servers", "Built-in player"],
               "feature_check_color": "#7c3aed",
               "feature_check_bg": "rgba(124,58,237,0.15)",
               "enabled": true,
-              "order": 8
+              "order": 7
             }
           ]
         },
@@ -545,134 +238,36 @@
       ]
     }
   ],
+
   "footer": {
     "telegram_url": "https://t.me/+abIZ9HkPXe9hNTlk",
     "telegram_text": "Join Telegram",
     "status_text": "Community · Updates · Support",
     "links": [
-      {
-        "label": "NetAnimo",
-        "url": "https://animo.netmovie.site/"
-      },
-      {
-        "label": "NetStream",
-        "url": "https://pc.netmovie.site/"
-      },
-      {
-        "label": "NetMovie Web",
-        "url": "https://n1.netmovie.site/"
-      }
+      { "label": "NetAnimo", "url": "https://animo.netmovie.site/" },
+      { "label": "NetStream", "url": "https://pc.netmovie.site/" },
+      { "label": "NetMovie Web", "url": "https://n1.netmovie.site/" }
     ],
     "copyright": "© NetMovie. All rights reserved."
   },
+
   "remote_fetch": {
     "url": "https://raw.githubusercontent.com/netmovieinc-png/loaded/refs/heads/main/load",
     "mappings": [
-      {
-        "json_key": "netmovie_url",
-        "target_app": "netmovie",
-        "field": "download_url"
-      },
-      {
-        "json_key": "netmovie_ver",
-        "target_app": "netmovie",
-        "field": "version"
-      },
-      {
-        "json_key": "ntanmo_url",
-        "target_app": "netanimo",
-        "field": "download_url"
-      },
-      {
-        "json_key": "ntanmo_ver",
-        "target_app": "netanimo",
-        "field": "version"
-      },
-      {
-        "json_key": "ntw_url",
-        "target_app": "netstream",
-        "field": "download_url"
-      },
-      {
-        "json_key": "ntw_ver",
-        "target_app": "netstream",
-        "field": "version"
-      },
-      {
-        "json_key": "nethome_url",
-        "target_app": "nethome",
-        "field": "download_url"
-      },
-      {
-        "json_key": "nethome_ver",
-        "target_app": "nethome",
-        "field": "version"
-      },
-      {
-        "json_key": "ntdrma_url",
-        "target_app": "netdrama",
-        "field": "download_url"
-      },
-      {
-        "json_key": "ntdrma_ver",
-        "target_app": "netdrama",
-        "field": "version"
-      },
-      {
-        "json_key": "nspt_url",
-        "target_app": "netsports",
-        "field": "download_url"
-      },
-      {
-        "json_key": "nspt_ver",
-        "target_app": "netsports",
-        "field": "version"
-      },
-      {
-        "json_key": "ntv_url",
-        "target_app": "nettv",
-        "field": "download_url"
-      },
-      {
-        "json_key": "ntv_ver",
-        "target_app": "nettv",
-        "field": "version"
-      },
-      {
-        "json_key": "nthb_url",
-        "target_app": "nethub",
-        "field": "download_url"
-      },
-      {
-        "json_key": "nthb_ver",
-        "target_app": "nethub",
-        "field": "version"
-      },
-      {
-        "json_key": "netmovie_url",
-        "target_app": "movies",
-        "field": "action_target"
-      },
-      {
-        "json_key": "ntanmo_url",
-        "target_app": "anime",
-        "field": "action_target"
-      },
-      {
-        "json_key": "ntdrma_url",
-        "target_app": "kdrama",
-        "field": "action_target"
-      },
-      {
-        "json_key": "ntv_url",
-        "target_app": "livetv",
-        "field": "action_target"
-      },
-      {
-        "json_key": "nspt_url",
-        "target_app": "sports",
-        "field": "action_target"
-      }
+      { "json_key": "netmovie_url", "target_app": "netmovie",  "field": "download_url" },
+      { "json_key": "netmovie_ver", "target_app": "netmovie",  "field": "version" },
+      { "json_key": "ntanmo_url",   "target_app": "netanimo",  "field": "download_url" },
+      { "json_key": "ntanmo_ver",   "target_app": "netanimo",  "field": "version" },
+      { "json_key": "ntdrma_url",   "target_app": "netdrama",  "field": "download_url" },
+      { "json_key": "ntdrma_ver",   "target_app": "netdrama",  "field": "version" },
+      { "json_key": "ntv_url",      "target_app": "nettv",     "field": "download_url" },
+      { "json_key": "ntv_ver",      "target_app": "nettv",     "field": "version" },
+      { "json_key": "nspt_url",     "target_app": "netsports", "field": "download_url" },
+      { "json_key": "nspt_ver",     "target_app": "netsports", "field": "version" },
+      { "json_key": "nethome_url",  "target_app": "nethome",   "field": "download_url" },
+      { "json_key": "nethome_ver",  "target_app": "nethome",   "field": "version" },
+      { "json_key": "nthb_url",     "target_app": "nethub",    "field": "download_url" },
+      { "json_key": "nthb_ver",     "target_app": "nethub",    "field": "version" }
     ]
   }
 }
