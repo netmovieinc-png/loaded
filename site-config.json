@@ -157,7 +157,7 @@
               ],
               "feature_check_color": "#7c3aed",
               "feature_check_bg": "rgba(124,58,237,0.15)",
-              "enabled": true,
+              "enabled": false,
               "order": 2
             },
             {
@@ -196,7 +196,7 @@
               ],
               "feature_check_color": "#ece646",
               "feature_check_bg": "#ecde46",
-              "enabled": true,
+              "enabled": false,
               "order": 3
             },
             {
@@ -234,7 +234,7 @@
               ],
               "feature_check_color": "#bc1010",
               "feature_check_bg": "#bc1010",
-              "enabled": true,
+              "enabled": false,
               "order": 4
             },
             {
@@ -272,7 +272,7 @@
               ],
               "feature_check_color": "#d50707",
               "feature_check_bg": "#d50707",
-              "enabled": true,
+              "enabled": false,
               "order": 5
             },
             {
@@ -351,7 +351,7 @@
               ],
               "feature_check_color": "#ed4040",
               "feature_check_bg": "#ed4040",
-              "enabled": true,
+              "enabled": false,
               "order": 7
             }
           ]
