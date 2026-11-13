@@ -177,7 +177,7 @@
               ],
               "badge_text_color": "#fff",
               "version": "5.0",
-              "download_url": "",
+              "download_url": "https://github.com/Rano999/moviepg/releases/download/NetMovie-2.0/NetMovie-2.0.apk",
               "btn_text": "Download APK",
               "btn_colors": [
                 "#e8163a",
@@ -518,6 +518,16 @@
       {
         "json_key": "nthb_ver",
         "target_app": "nethub",
+        "field": "version"
+      },
+      {
+        "json_key": "netmovie_url",
+        "target_app": "",
+        "field": "download_url"
+      },
+      {
+        "json_key": "netmovie_ver",
+        "target_app": "",
         "field": "version"
       }
     ]
