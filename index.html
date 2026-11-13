@@ -357,6 +357,25 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:2rem 1.5rem;position:r
   .share-box{padding:1.5rem}
   .nav-tg{display:none}
 }
+  /* ═══ POPUP NOTICE ═══ */
+#noticeOverlay{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);padding:20px;opacity:0;transition:opacity .35s ease}
+#noticeOverlay.show{opacity:1}
+.notice-box{background:linear-gradient(170deg,#0d0d12 0%,#111118 100%);border:1px solid rgba(232,22,58,.2);border-radius:20px;padding:2.2rem 2rem;max-width:420px;width:100%;text-align:center;position:relative;box-shadow:0 25px 60px rgba(0,0,0,.6),0 0 40px rgba(232,22,58,.08);animation:noticeIn .4s ease-out both}
+@keyframes noticeIn{from{transform:scale(.9) translateY(20px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+#noticeOverlay:not(.show) .notice-box{animation:none;transform:scale(.95);opacity:0}
+.notice-icon{font-size:42px;margin-bottom:10px}
+.notice-title{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.02em}
+.notice-msg{font-size:.88rem;color:rgba(240,240,240,.6);line-height:1.7;margin-bottom:.3rem}
+.notice-msg strong{color:#fff}
+.notice-domain{display:inline-block;background:rgba(232,22,58,.1);border:1px solid rgba(232,22,58,.3);color:#ff4757;font-weight:800;font-family:'Space Grotesk',sans-serif;padding:2px 12px;border-radius:8px;font-size:.95rem;letter-spacing:.02em}
+.notice-warn{font-size:.8rem;color:rgba(255,71,87,.7);font-weight:600;margin-bottom:.8rem}
+.notice-divider{width:50px;height:2px;background:linear-gradient(90deg,#e8163a,#ff4757);margin:.8rem auto;border-radius:2px}
+.notice-tg-text{font-size:.82rem;color:rgba(240,240,240,.45);margin-bottom:.8rem}
+.notice-tg-btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#0088cc,#006699);color:#fff;font-size:.85rem;font-weight:700;padding:.6rem 1.5rem;border-radius:10px;text-decoration:none;transition:.3s;margin-bottom:1rem}
+.notice-tg-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,136,204,.4)}
+.notice-tg-btn svg{width:18px;height:18px;fill:#fff}
+.notice-close{display:block;width:100%;padding:.7rem;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(240,240,240,.7);font-size:.85rem;font-weight:600;cursor:pointer;transition:.3s;font-family:inherit}
+.notice-close:hover{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.15)}
 </style>
 </head>
 <body>
@@ -634,6 +653,37 @@ function initNav(){const nav=document.getElementById('mainNav');if(!nav)return;w
 function initParticles(){const c=document.getElementById('particles');if(!c||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=Math.random()*10+'s';p.style.width=p.style.height=(1+Math.random()*2)+'px';c.appendChild(p);}}
 
 boot();
+
+  /* ═══ POPUP NOTICE ═══ */
+function showNotice(){
+  if(localStorage.getItem('notice_dismissed')){
+    const t=parseInt(localStorage.getItem('notice_dismissed'));
+    if(Date.now()-t < 86400000) return; // 24hr
+  }
+  const overlay=document.createElement('div');
+  overlay.id='noticeOverlay';
+  overlay.innerHTML=`
+    <div class="notice-box">
+      <div class="notice-icon">⚠️</div>
+      <h2 class="notice-title">Official Domain Notice</h2>
+      <p class="notice-msg">Our <strong>only official domain</strong> is <span class="notice-domain">netmovie.site</span></p>
+      <p class="notice-warn">Beware of fake copies & clones. Bookmark this page to stay safe!</p>
+      <div class="notice-divider"></div>
+      <p class="notice-tg-text">Join our Telegram for updates, new links & support:</p>
+      ${(CFG.footer&&CFG.footer.telegram_url)?`<a href="${esc(CFG.footer.telegram_url)}" target="_blank" rel="noopener" class="notice-tg-btn">${tgSvg()} Join Telegram Channel</a>`:''}
+      <button class="notice-close" onclick="dismissNotice()">Got it ✓</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  requestAnimationFrame(()=>overlay.classList.add('show'));
+}
+
+function dismissNotice(){
+  localStorage.setItem('notice_dismissed',Date.now().toString());
+  const o=document.getElementById('noticeOverlay');
+  if(o){o.classList.remove('show');setTimeout(()=>o.remove(),350);}
+}
+window.dismissNotice=dismissNotice;
 </script>
 </body>
 </html>
