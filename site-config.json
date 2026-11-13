@@ -73,8 +73,8 @@
     {
       "id": "movies",
       "icon": "🎬",
-      "icon_type": "emoji",
-      "icon_img": "",
+      "icon_type": "image",
+      "icon_img": "https://www.netmovie.site/assets/logos/xgubjtz.png",
       "title": "Everything",
       "subtitle": "Hollywood, Bollywood, Web Series & More",
       "color": "#e8163a",
@@ -90,8 +90,8 @@
     {
       "id": "anime",
       "icon": "⛩️",
-      "icon_type": "emoji",
-      "icon_img": "",
+      "icon_type": "image",
+      "icon_img": "https://www.netmovie.site/assets/logos/x5sca8a.png",
       "title": "Anime",
       "subtitle": "Sub & Dub, Hindi Dubbed, All Genres",
       "color": "#7c3aed",
@@ -107,8 +107,8 @@
     {
       "id": "kdrama",
       "icon": "🇰🇷",
-      "icon_type": "emoji",
-      "icon_img": "",
+      "icon_type": "image",
+      "icon_img": "https://www.netmovie.site/assets/logos/xu5qp6e.png",
       "title": "K-Drama",
       "subtitle": "Korean, Chinese & Japanese Dramas",
       "color": "#f59e0b",
