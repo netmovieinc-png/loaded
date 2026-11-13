@@ -151,102 +151,137 @@
       "subtitle": "Choose how you want to watch",
       "enabled": true,
       "order": 1,
-      "apps": [
+      "blocks": [
         {
-          "id": "netmovie",
-          "name": "NetMovie",
-          "logo_text": "N",
-          "logo_colors": [
-            "#e8163a",
-            "#b8102e"
-          ],
-          "badge_text": "🔥 Ultra Edition",
-          "badge_colors": [
-            "#e8163a",
-            "#f59e0b"
-          ],
-          "badge_text_color": "#fff",
-          "version": "5.0",
-          "download_url": "",
-          "btn_text": "Download APK",
-          "btn_colors": [
-            "#e8163a",
-            "#b8102e"
-          ],
-          "btn_text_color": "#fff",
-          "size_text": "Android · Free",
-          "features": [
-            "Movies & TV Series",
-            "Live TV & Sports",
-            "Download for offline",
-            "Multi-language subs",
-            "Premium streaming",
-            "Extended library",
-            "Faster servers",
-            "Built-in player"
-          ],
-          "feature_check_color": "#e8163a",
-          "feature_check_bg": "rgba(232,22,58,0.15)",
+          "id": "x6et9gz",
+          "type": "apps",
           "enabled": true,
-          "order": 1
+          "apps": [
+            {
+              "id": "netmovie",
+              "name": "NetMovie",
+              "logo_text": "N",
+              "logo_colors": [
+                "#e8163a",
+                "#b8102e"
+              ],
+              "badge_text": "🔥 Recommend",
+              "badge_colors": [
+                "#e8163a",
+                "#f59e0b"
+              ],
+              "badge_text_color": "#fff",
+              "version": "5.0",
+              "download_url": "",
+              "btn_text": "Download APK",
+              "btn_colors": [
+                "#e8163a",
+                "#b8102e"
+              ],
+              "btn_text_color": "#fff",
+              "size_text": "Android · Free",
+              "features": [
+                "Movies & TV Series",
+                "Live TV & Sports",
+                "Download for offline",
+                "Multi-language subs",
+                "Premium streaming",
+                "Extended library",
+                "Faster servers",
+                "Built-in player"
+              ],
+              "feature_check_color": "#e8163a",
+              "feature_check_bg": "rgba(232,22,58,0.15)",
+              "enabled": true,
+              "order": 1,
+              "logo": {
+                "type": "image",
+                "text": "N",
+                "colors": [
+                  "#e8163a",
+                  "#b8102e"
+                ],
+                "url": "https://www.netmovie.site/assets/logos/xqtfa8c.png"
+              }
+            },
+            {
+              "id": "nethub",
+              "name": "NetHub",
+              "logo_text": "H",
+              "logo_colors": [
+                "#7c3aed",
+                "#5b21b6"
+              ],
+              "badge_text": "★ Recommended",
+              "badge_colors": [
+                "#e8163a",
+                "#f43f5e"
+              ],
+              "badge_text_color": "#fff",
+              "version": "2.1",
+              "download_url": "",
+              "btn_text": "Download APK",
+              "btn_colors": [
+                "#7c3aed",
+                "#5b21b6"
+              ],
+              "btn_text_color": "#fff",
+              "size_text": "Android · Free",
+              "features": [
+                "Premium streaming",
+                "Extended library",
+                "Faster servers",
+                "Built-in player"
+              ],
+              "feature_check_color": "#7c3aed",
+              "feature_check_bg": "rgba(124,58,237,0.15)",
+              "enabled": false,
+              "order": 2,
+              "logo": {
+                "type": "text",
+                "text": "H",
+                "colors": [
+                  "#7c3aed",
+                  "#5b21b6"
+                ]
+              }
+            }
+          ]
         },
         {
-          "id": "nethub",
-          "name": "NetHub",
-          "logo_text": "H",
-          "logo_colors": [
-            "#7c3aed",
-            "#5b21b6"
-          ],
-          "badge_text": "★ Recommended",
-          "badge_colors": [
-            "#e8163a",
-            "#f43f5e"
-          ],
-          "badge_text_color": "#fff",
-          "version": "2.1",
-          "download_url": "",
-          "btn_text": "Download APK",
-          "btn_colors": [
-            "#7c3aed",
-            "#5b21b6"
-          ],
-          "btn_text_color": "#fff",
-          "size_text": "Android · Free",
-          "features": [
-            "Premium streaming",
-            "Extended library",
-            "Faster servers",
-            "Built-in player"
-          ],
-          "feature_check_color": "#7c3aed",
-          "feature_check_bg": "rgba(124,58,237,0.15)",
+          "id": "xwo6tgu",
+          "type": "divider",
           "enabled": true,
-          "order": 2
-        }
-      ],
-      "web_links": [
-        {
-          "id": "webplayer",
-          "name": "Web Player",
-          "url": "https://pc.netmovie.site/",
-          "description": "Works on any device — iOS, PC, Mac, anything with a browser",
-          "badge": "No Install",
-          "icon": "🌐",
-          "btn_text": "Open ›",
-          "enabled": true,
-          "order": 1
+          "label": "OR"
         },
         {
-          "id": "netmovie_web",
-          "name": "NetMovie Web",
-          "url": "https://n1.netmovie.site/",
-          "description": "Full NetMovie experience in your browser",
-          "badge": "New",
-          "icon": "🎬",
-          "btn_text": "Open ›",
+          "id": "xa9yzh1",
+          "type": "webs",
           "enabled": true,
-          "order": 2
+          "webs": [
+            {
+              "id": "webplayer",
+              "name": "Web Player",
+              "url": "https://pc.netmovie.site/",
+              "description": "Works on any device — iOS, PC, Mac, anything with a browser",
+              "badge": "No Install",
+              "icon": "🌐",
+              "btn_text": "Open ›",
+              "enabled": true,
+              "order": 1
+            },
+            {
+              "id": "netmovie_web",
+              "name": "NetMovie Web",
+              "url": "https://n1.netmovie.site/",
+              "description": "Full NetMovie experience in your browser",
+              "badge": "New",
+              "icon": "🎬",
+              "btn_text": "Open ›",
+              "enabled": true,
+              "order": 2
+            }
+          ]
         }
       ]
     },
@@ -256,55 +291,81 @@
       "subtitle": "500+ live channels from around the world",
       "enabled": true,
       "order": 2,
-      "apps": [
+      "blocks": [
         {
-          "id": "nettv",
-          "name": "NetTV",
-          "logo_text": "TV",
-          "logo_colors": [
-            "#10b981",
-            "#059669"
-          ],
-          "badge_text": "★ Recommended",
-          "badge_colors": [
-            "#e8163a",
-            "#f43f5e"
-          ],
-          "badge_text_color": "#fff",
-          "version": "7.0",
-          "download_url": "",
-          "btn_text": "Download APK",
-          "btn_colors": [
-            "#10b981",
-            "#059669"
-          ],
-          "btn_text_color": "#fff",
-          "size_text": "Android · Free",
-          "features": [
-            "Live Sports channels",
-            "500+ live TV channels",
-            "HD & SD quality",
-            "News, entertainment, kids",
-            "Multiple languages",
-            "Zero Ads"
-          ],
-          "feature_check_color": "#10b981",
-          "feature_check_bg": "rgba(16,185,129,0.15)",
+          "id": "xdcid3b",
+          "type": "apps",
           "enabled": true,
-          "order": 1
-        }
-      ],
-      "web_links": [
+          "apps": [
+            {
+              "id": "nettv",
+              "name": "NetTV",
+              "logo_text": "TV",
+              "logo_colors": [
+                "#10b981",
+                "#059669"
+              ],
+              "badge_text": "★ Recommended",
+              "badge_colors": [
+                "#e8163a",
+                "#f43f5e"
+              ],
+              "badge_text_color": "#fff",
+              "version": "7.0",
+              "download_url": "",
+              "btn_text": "Download APK",
+              "btn_colors": [
+                "#10b981",
+                "#059669"
+              ],
+              "btn_text_color": "#fff",
+              "size_text": "Android · Free",
+              "features": [
+                "Live Sports channels",
+                "500+ live TV channels",
+                "HD & SD quality",
+                "News, entertainment, kids",
+                "Multiple languages",
+                "Zero Ads"
+              ],
+              "feature_check_color": "#10b981",
+              "feature_check_bg": "rgba(16,185,129,0.15)",
+              "enabled": true,
+              "order": 1,
+              "logo": {
+                "type": "text",
+                "text": "TV",
+                "colors": [
+                  "#10b981",
+                  "#059669"
+                ]
+              }
+            }
+          ]
+        },
         {
-          "id": "tv_web",
-          "name": "Web Player",
-          "url": "https://pc.netmovie.site/",
-          "description": "Watch live TV in your browser — no download needed",
-          "badge": "No Install",
-          "icon": "🌐",
-          "btn_text": "Open ›",
+          "id": "xyhn7i9",
+          "type": "divider",
           "enabled": true,
-          "order": 1
+          "label": "OR"
+        },
+        {
+          "id": "x1omck8",
+          "type": "webs",
+          "enabled": true,
+          "webs": [
+            {
+              "id": "tv_web",
+              "name": "Web Player",
+              "url": "https://pc.netmovie.site/",
+              "description": "Watch live TV in your browser — no download needed",
+              "badge": "No Install",
+              "icon": "🌐",
+              "btn_text": "Open ›",
+              "enabled": true,
+              "order": 1
+            }
+          ]
         }
       ]
     },
@@ -314,53 +375,79 @@
       "subtitle": "Live matches, highlights and replays",
       "enabled": true,
       "order": 3,
-      "apps": [
+      "blocks": [
         {
-          "id": "netsports",
-          "name": "NetSports",
-          "logo_text": "SP",
-          "logo_colors": [
-            "#06b6d4",
-            "#0891b2"
-          ],
-          "badge_text": "+ Plus Edition",
-          "badge_colors": [
-            "#06b6d4",
-            "#22d3ee"
-          ],
-          "badge_text_color": "#000",
-          "version": "31",
-          "download_url": "",
-          "btn_text": "Download APK",
-          "btn_colors": [
-            "#06b6d4",
-            "#0891b2"
-          ],
-          "btn_text_color": "#fff",
-          "size_text": "Android · Free",
-          "features": [
-            "Live cricket, football, UFC",
-            "HD streaming",
-            "Multi-server support",
-            "Match alerts & schedules"
-          ],
-          "feature_check_color": "#06b6d4",
-          "feature_check_bg": "rgba(6,182,212,0.15)",
+          "id": "x4qma7e",
+          "type": "apps",
           "enabled": true,
-          "order": 1
-        }
-      ],
-      "web_links": [
+          "apps": [
+            {
+              "id": "netsports",
+              "name": "NetSports",
+              "logo_text": "SP",
+              "logo_colors": [
+                "#06b6d4",
+                "#0891b2"
+              ],
+              "badge_text": "+ Plus Edition",
+              "badge_colors": [
+                "#06b6d4",
+                "#22d3ee"
+              ],
+              "badge_text_color": "#000",
+              "version": "31",
+              "download_url": "",
+              "btn_text": "Download APK",
+              "btn_colors": [
+                "#06b6d4",
+                "#0891b2"
+              ],
+              "btn_text_color": "#fff",
+              "size_text": "Android · Free",
+              "features": [
+                "Live cricket, football, UFC",
+                "HD streaming",
+                "Multi-server support",
+                "Match alerts & schedules"
+              ],
+              "feature_check_color": "#06b6d4",
+              "feature_check_bg": "rgba(6,182,212,0.15)",
+              "enabled": true,
+              "order": 1,
+              "logo": {
+                "type": "text",
+                "text": "SP",
+                "colors": [
+                  "#06b6d4",
+                  "#0891b2"
+                ]
+              }
+            }
+          ]
+        },
         {
-          "id": "sports_web",
-          "name": "Web Player",
-          "url": "https://pc.netmovie.site/",
-          "description": "Watch live sports in your browser — no download needed",
-          "badge": "No Install",
-          "icon": "🌐",
-          "btn_text": "Open ›",
+          "id": "xtwjjqo",
+          "type": "divider",
           "enabled": true,
-          "order": 1
+          "label": "OR"
+        },
+        {
+          "id": "xqezynu",
+          "type": "webs",
+          "enabled": true,
+          "webs": [
+            {
+              "id": "sports_web",
+              "name": "Web Player",
+              "url": "https://pc.netmovie.site/",
+              "description": "Watch live sports in your browser — no download needed",
+              "badge": "No Install",
+              "icon": "🌐",
+              "btn_text": "Open ›",
+              "enabled": true,
+              "order": 1
+            }
+          ]
         }
       ]
     }
