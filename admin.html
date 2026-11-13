@@ -77,10 +77,10 @@ a{color:var(--red)}
   <div class="box">
     <h2>🔐 Admin Access</h2>
     <p>Enter your GitHub details. Token stays in this browser only.</p>
-    <div class="field"><label>GitHub Username / Org</label><input type="text" id="g_owner" placeholder=""></div>
-    <div class="field"><label>Repository</label><input type="text" id="g_repo" placeholder=""></div>
-    <div class="field"><label>Branch</label><input type="text" id="g_branch" value=""></div>
-    <div class="field"><label>Config file path</label><input type="text" id="g_path" value=""></div>
+    <div class="field"><label>GitHub Username / Org</label><input type="text" id="g_owner" placeholder="netmovieinc-png"></div>
+    <div class="field"><label>Repository</label><input type="text" id="g_repo" placeholder="loaded"></div>
+    <div class="field"><label>Branch</label><input type="text" id="g_branch" value="main"></div>
+    <div class="field"><label>Config file path</label><input type="text" id="g_path" value="site-config.json"></div>
     <div class="field"><label>Personal Access Token (repo scope)</label><input type="text" id="g_token" placeholder="ghp_..."></div>
     <label style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--dim);margin:10px 0 16px"><input type="checkbox" id="g_remember"> Remember on this device</label>
     <button class="btn primary" style="width:100%" onclick="connect()">Connect & Load</button>
@@ -115,7 +115,7 @@ function toast(m,k){const t=$('toast');t.textContent=m;t.className='show '+(k||'
 function esc(s){return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 function attr(s){return String(s==null?'':s).replace(/"/g,'&quot;');}
 
-/* ---------- CONNECT ---------- */
+/* ========== CONNECT ========== */
 function connect(){
   GH.owner=$('g_owner').value.trim();GH.repo=$('g_repo').value.trim();
   GH.branch=$('g_branch').value.trim()||'main';GH.path=$('g_path').value.trim()||'site-config.json';
@@ -130,33 +130,12 @@ async function loadConfig(){
   try{
     const url=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${encodeURIComponent(GH.path)}?ref=${GH.branch}&t=${Date.now()}`;
     const r=await fetch(url,{headers:{Authorization:'token '+GH.token,Accept:'application/vnd.github+json'}});
-
-    if(r.status===401 || r.status===403){
-      $('gate_err').textContent='Token rejected or no access to this repo. Check your token.';
-      return;
-    }
-    if(r.status===404){
-      const ok=confirm(
-        'No file found at:\n'+GH.owner+'/'+GH.repo+' → '+GH.path+'\n\n'+
-        'This almost always means a wrong owner, repo, branch, or path.\n\n'+
-        'Click Cancel to go back and fix it.\n'+
-        'Click OK ONLY if you truly want to create a brand-new empty config here.'
-      );
-      if(ok){ CFG=defaultConfig(); SHA=null; enterApp(); toast('New EMPTY config — will be created on save','err'); }
-      else { $('gate_err').textContent='File not found — check owner, repo, branch and path.'; }
-      return;
-    }
+    if(r.status===404){CFG=defaultConfig();SHA=null;enterApp();toast('New config (created on save)','ok');return;}
     if(!r.ok) throw new Error('GitHub '+r.status);
-
-    const d=await r.json();
-    SHA=d.sha;
+    const d=await r.json();SHA=d.sha;
     CFG=JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,'')))));
-    // sanity: warn if the loaded config looks empty
-    if((!CFG.sections||!CFG.sections.length) && (!CFG.landing_tiles||!CFG.landing_tiles.length)){
-      toast('⚠ Loaded config has no sections — are you on the right file?','err');
-    }
     enterApp();
-  }catch(e){ $('gate_err').textContent='Failed: '+e.message; }
+  }catch(e){$('gate_err').textContent='Failed: '+e.message;}
 }
 function enterApp(){
   $('gate').style.display='none';$('topbar').style.display='flex';$('main').style.display='block';
@@ -165,7 +144,7 @@ function enterApp(){
 }
 function refreshMntChip(){$('mntChip').style.display=(CFG.maintenance&&CFG.maintenance.enabled)?'inline-block':'none';}
 
-/* ---------- SAVE CONFIG ---------- */
+/* ========== SAVE CONFIG ========== */
 async function save(){
   $('saveBtn').disabled=true;$('saveBtn').textContent='Saving…';
   try{
@@ -182,7 +161,7 @@ async function save(){
 }
 function previewJson(){const w=window.open('','_blank');w.document.write('<pre style="white-space:pre-wrap;word-break:break-word;font:12px monospace;background:#0a0a0f;color:#eee;padding:20px">'+JSON.stringify(CFG,null,2).replace(/</g,'&lt;')+'</pre>');}
 
-/* ---------- IMAGE UPLOAD TO GITHUB ---------- */
+/* ========== IMAGE UPLOAD TO GITHUB ========== */
 $('fileInput').addEventListener('change',async function(){
   const file=this.files[0];this.value='';if(!file||!uploadCb)return;
   if(file.size>1.5*1024*1024){toast('Image too big (max 1.5MB)','err');return;}
@@ -195,14 +174,14 @@ $('fileInput').addEventListener('change',async function(){
     const r=await fetch(url,{method:'PUT',headers:{Authorization:'token '+GH.token,Accept:'application/vnd.github+json'},
       body:JSON.stringify({message:'upload logo '+path,content:b64,branch:GH.branch})});
     if(!r.ok){const t=await r.text();throw new Error('GitHub '+r.status+' '+t.slice(0,100));}
-const siteUrl = `https://www.netmovie.site/${path}`;
-uploadCb(siteUrl);uploadCb=null;toast('Image uploaded ✓','ok');touch();
+    const rawUrl=`https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/${path}`;
+    uploadCb(rawUrl);uploadCb=null;toast('Image uploaded ✓','ok');touch();
   }catch(e){toast('Upload failed: '+e.message,'err');uploadCb=null;}
 });
 function fileToB64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});}
 function pickImage(cb){uploadCb=cb;$('fileInput').click();}
 
-/* ---------- TABS ---------- */
+/* ========== TABS ========== */
 function buildTabs(){
   const base=[['hero','Hero'],['tiles','Landing Tiles'],['groups','Tile Groups'],['sections','Sections'],['maintenance','🔧 Maintenance'],['footer','Footer'],['meta','Meta / SEO'],['remote','Remote Fetch']];
   $('tabs').innerHTML=base.map(([id,lb])=>`<div class="tab ${TAB===id?'active':''}" onclick="setTab('${id}')">${lb}</div>`).join('');
@@ -222,7 +201,7 @@ function renderTab(){
 }
 function touch(){renderTab();}
 
-/* ---------- FIELD HELPERS ---------- */
+/* ========== FIELD HELPERS ========== */
 function txt(l,v,oi,ph){return `<div class="field"><label>${l}</label><input type="text" value="${attr(v)}" oninput="${oi}" placeholder="${ph||''}"></div>`;}
 function area(l,v,oi){return `<div class="field"><label>${l}</label><textarea oninput="${oi}">${esc(v)}</textarea></div>`;}
 function color(l,v,oi){const x=v||'#000000';return `<div class="field"><label>${l}</label><div class="color-field"><input type="color" value="${attr(x)}" oninput="${oi}"><input type="text" value="${attr(x)}" oninput="${oi}"></div></div>`;}
@@ -230,9 +209,8 @@ function sel(l,v,opts,oi){return `<div class="field"><label>${l}</label><select 
 function switchEl(c,oc){return `<label class="sw"><input type="checkbox" ${c!==false?'checked':''} onchange="${oc}"><span class="sl"></span></label>`;}
 function move(arr,i,d){const j=i+d;if(j<0||j>=arr.length)return;const t=arr[i];arr[i]=arr[j];arr[j]=t;touch();}
 
-/* ---------- LOGO EDITOR (reusable: text badge OR image) ---------- */
+/* ========== LOGO EDITOR (text badge OR image) ========== */
 function logoEditor(logoObj, pathExpr){
-  // logoObj: {type:'text'|'image', text, colors:[c1,c2], url}
   const lg=logoObj;
   const prev = lg.type==='image' && lg.url
     ? `<div class="logo-prev"><img src="${attr(lg.url)}"></div>`
@@ -253,13 +231,40 @@ function logoEditor(logoObj, pathExpr){
 }
 function ensureLogo(obj){ if(!obj.logo){ obj.logo={type:'text',text:obj.logo_text||'',colors:obj.logo_colors||['#333','#111']}; } return obj.logo; }
 
-/* ---------- HERO ---------- */
+/* ========== ICON EDITOR (reusable for any emoji/image icon field) ========== */
+function iconEditor(obj, pathExpr, labelEmoji, labelImg){
+  obj.icon_type=obj.icon_type||'emoji';
+  obj.icon_img=obj.icon_img||'';
+  let out=`<div class="row">${sel('Icon type',obj.icon_type,['emoji','image'],`${pathExpr}.icon_type=this.value;touch()`)}`;
+  if(obj.icon_type==='image'){
+    out+=txt(labelImg||'Icon image URL',obj.icon_img,`${pathExpr}.icon_img=this.value`,'https://...png');
+    out+=`</div><button class="btn sm" style="margin-bottom:10px" onclick="pickImage(u=>{${pathExpr}.icon_img=u})">⬆ Upload icon</button>`;
+  }else{
+    out+=txt(labelEmoji||'Icon (emoji)',obj.icon,`${pathExpr}.icon=this.value`);
+    out+=`</div>`;
+  }
+  return out;
+}
+
+/* ========== HERO ========== */
 function renderHero(){
   const h=CFG.hero=CFG.hero||{};
-  ensureLogo(h.brand_logo?{logo:h.brand_logo}:{}); // noop safety
   h.brand_logo=h.brand_logo||{type:'text',text:h.brand_logo_text||'N',colors:[h.brand_color||'#e8163a','#b8102e']};
   const langs=(h.languages||[]).map((l,i)=>`<div class="feat-row"><input type="text" value="${attr(l)}" oninput="CFG.hero.languages[${i}]=this.value"><button class="btn sm danger" onclick="CFG.hero.languages.splice(${i},1);touch()">✕</button></div>`).join('');
-  const feats=(h.features||[]).map((f,i)=>`<div class="item"><div class="row3">${txt('Icon',f.icon,`CFG.hero.features[${i}].icon=this.value`)}${txt('Label',f.label,`CFG.hero.features[${i}].label=this.value`)}${color('BG tint',f.bg,`CFG.hero.features[${i}].bg=this.value`)}</div><button class="btn sm danger" onclick="CFG.hero.features.splice(${i},1);touch()">Remove</button></div>`).join('');
+  const feats=(h.features||[]).map((f,i)=>{
+    f.icon_type=f.icon_type||'emoji';
+    f.icon_img=f.icon_img||'';
+    return `<div class="item">
+      <div class="row3">
+        ${sel('Icon type',f.icon_type,['emoji','image'],`CFG.hero.features[${i}].icon_type=this.value;touch()`)}
+        ${f.icon_type==='image'?txt('Icon image URL',f.icon_img,`CFG.hero.features[${i}].icon_img=this.value`):txt('Icon (emoji)',f.icon,`CFG.hero.features[${i}].icon=this.value`)}
+        ${txt('Label',f.label,`CFG.hero.features[${i}].label=this.value`)}
+      </div>
+      ${f.icon_type==='image'?`<button class="btn sm" style="margin:6px 0" onclick="pickImage(u=>{CFG.hero.features[${i}].icon_img=u})">⬆ Upload icon</button>`:''}
+      ${color('BG tint',f.bg,`CFG.hero.features[${i}].bg=this.value`)}
+      <button class="btn sm danger" onclick="CFG.hero.features.splice(${i},1);touch()">Remove</button>
+    </div>`;
+  }).join('');
   return `
   <div class="card"><h3>Brand</h3>
     ${logoEditor(h.brand_logo,'CFG.hero.brand_logo')}
@@ -272,16 +277,16 @@ function renderHero(){
     ${area('Subtitle',h.subtitle,`CFG.hero.subtitle=this.value`)}
   </div>
   <div class="card"><h3>Languages<span class="sp"></span><button class="btn sm" onclick="CFG.hero.languages=CFG.hero.languages||[];CFG.hero.languages.push('New');touch()">+ Add</button></h3>${langs||'<div class="subtle">None</div>'}</div>
-  <div class="card"><h3>Feature pills<span class="sp"></span><button class="btn sm" onclick="CFG.hero.features=CFG.hero.features||[];CFG.hero.features.push({icon:'⭐',label:'New',bg:'rgba(255,255,255,.1)'});touch()">+ Add</button></h3>${feats||'<div class="subtle">None</div>'}</div>`;
+  <div class="card"><h3>Feature pills<span class="sp"></span><button class="btn sm" onclick="CFG.hero.features=CFG.hero.features||[];CFG.hero.features.push({icon:'⭐',icon_type:'emoji',icon_img:'',label:'New',bg:'rgba(255,255,255,.1)'});touch()">+ Add</button></h3>${feats||'<div class="subtle">None</div>'}</div>`;
 }
 
-/* ---------- TILE EDITOR (with image icon option) ---------- */
+/* ========== TILE EDITOR (with editable ID + image icon) ========== */
 function tileEditor(t,p){
   t.icon_img=t.icon_img||'';
+  t.icon_type=t.icon_type||'emoji';
   return `
-    <div class="row">${sel('Icon type',t.icon_type||'emoji',['emoji','image'],`${p}.icon_type=this.value;touch()`)}
-    ${t.icon_type==='image'?txt('Icon image URL',t.icon_img,`${p}.icon_img=this.value`):txt('Icon (emoji)',t.icon,`${p}.icon=this.value`)}</div>
-    ${t.icon_type==='image'?`<button class="btn sm" style="margin-bottom:10px" onclick="pickImage(u=>{${p}.icon_img=u})">⬆ Upload icon</button>`:''}
+    ${txt('Tile ID (for remote fetch)',t.id,`${p}.id=this.value`,'unique-id')}
+    ${iconEditor(t,p,'Icon (emoji)','Icon image URL')}
     ${txt('Title',t.title,`${p}.title=this.value`)}
     ${txt('Subtitle',t.subtitle,`${p}.subtitle=this.value`)}
     <div class="row">${color('Color',t.color,`${p}.color=this.value`)}${color('Gradient end',t.gradient_end,`${p}.gradient_end=this.value`)}</div>
@@ -290,32 +295,33 @@ function tileEditor(t,p){
     <div class="row">${sel('Action',t.action_type||'section',['section','link'],`${p}.action_type=this.value;touch()`)}${txt(t.action_type==='link'?'Link URL':'Target section id',t.action_target,`${p}.action_target=this.value`)}</div>`;
 }
 
-/* ---------- LANDING TILES ---------- */
+/* ========== LANDING TILES ========== */
 function renderTiles(){
   CFG.landing_tiles=CFG.landing_tiles||[];
-  const items=CFG.landing_tiles.map((t,i)=>`<div class="item"><div class="item-head"><span class="title">${esc(t.title||'Untitled')}</span><div class="reorder"><button class="btn sm" onclick="move(CFG.landing_tiles,${i},-1)">▲</button><button class="btn sm" onclick="move(CFG.landing_tiles,${i},1)">▼</button></div>${switchEl(t.enabled,`CFG.landing_tiles[${i}].enabled=this.checked`)}</div>${tileEditor(t,`CFG.landing_tiles[${i}]`)}<button class="btn sm danger" onclick="CFG.landing_tiles.splice(${i},1);touch()">Delete tile</button></div>`).join('');
+  const items=CFG.landing_tiles.map((t,i)=>`<div class="item"><div class="item-head"><span class="title">${esc(t.title||'Untitled')} <span class="chip">${esc(t.id)}</span></span><div class="reorder"><button class="btn sm" onclick="move(CFG.landing_tiles,${i},-1)">▲</button><button class="btn sm" onclick="move(CFG.landing_tiles,${i},1)">▼</button></div>${switchEl(t.enabled,`CFG.landing_tiles[${i}].enabled=this.checked`)}</div>${tileEditor(t,`CFG.landing_tiles[${i}]`)}<button class="btn sm danger" onclick="CFG.landing_tiles.splice(${i},1);touch()">Delete tile</button></div>`).join('');
   return `<div class="hint">Big category cards on the homepage. "section" jumps to a section id; "link" opens a URL.</div><div class="card"><h3>Landing Tiles<span class="sp"></span><button class="btn sm" onclick="CFG.landing_tiles.push(newTile());touch()">+ Add tile</button></h3>${items||'<div class="subtle">No tiles</div>'}</div>`;
 }
 
-/* ---------- GROUPS ---------- */
+/* ========== GROUPS ========== */
 function renderGroups(){
   CFG.landing_groups=CFG.landing_groups||[];
   const items=CFG.landing_groups.map((g,gi)=>{
     g.tiles=g.tiles||[];
-    const tiles=g.tiles.map((t,ti)=>`<div class="item"><div class="item-head"><span class="title">${esc(t.title||'Tile')}</span><div class="reorder"><button class="btn sm" onclick="move(CFG.landing_groups[${gi}].tiles,${ti},-1)">▲</button><button class="btn sm" onclick="move(CFG.landing_groups[${gi}].tiles,${ti},1)">▼</button></div>${switchEl(t.enabled,`CFG.landing_groups[${gi}].tiles[${ti}].enabled=this.checked`)}</div>${tileEditor(t,`CFG.landing_groups[${gi}].tiles[${ti}]`)}<button class="btn sm danger" onclick="CFG.landing_groups[${gi}].tiles.splice(${ti},1);touch()">Delete</button></div>`).join('');
+    const tiles=g.tiles.map((t,ti)=>`<div class="item"><div class="item-head"><span class="title">${esc(t.title||'Tile')} <span class="chip">${esc(t.id)}</span></span><div class="reorder"><button class="btn sm" onclick="move(CFG.landing_groups[${gi}].tiles,${ti},-1)">▲</button><button class="btn sm" onclick="move(CFG.landing_groups[${gi}].tiles,${ti},1)">▼</button></div>${switchEl(t.enabled,`CFG.landing_groups[${gi}].tiles[${ti}].enabled=this.checked`)}</div>${tileEditor(t,`CFG.landing_groups[${gi}].tiles[${ti}]`)}<button class="btn sm danger" onclick="CFG.landing_groups[${gi}].tiles.splice(${ti},1);touch()">Delete</button></div>`).join('');
     return `<div class="card"><h3>${esc(g.title||'Group')}<span class="sp"></span>${switchEl(g.enabled,`CFG.landing_groups[${gi}].enabled=this.checked`)}<button class="btn sm danger" onclick="CFG.landing_groups.splice(${gi},1);touch()">Delete group</button></h3>${txt('Group title',g.title,`CFG.landing_groups[${gi}].title=this.value`)}${txt('Group subtitle',g.subtitle,`CFG.landing_groups[${gi}].subtitle=this.value`)}${txt('Columns',g.columns||2,`CFG.landing_groups[${gi}].columns=parseInt(this.value)||2`)}<div style="margin:10px 0 4px;font-weight:700;font-size:12px">Tiles <button class="btn sm" style="margin-left:8px" onclick="CFG.landing_groups[${gi}].tiles.push(newTile());touch()">+ Add tile</button></div>${tiles||'<div class="subtle">No tiles</div>'}</div>`;
   }).join('');
   return `<div class="hint">Titled rows of tiles (e.g. "Live TV & Sports").</div>${items||''}<button class="btn" onclick="CFG.landing_groups.push({id:uid(),title:'New Group',subtitle:'',columns:2,enabled:true,tiles:[]});touch()">+ Add group</button>`;
 }
 
-/* ---------- SECTIONS with BLOCKS ---------- */
+/* ========== SECTIONS with BLOCKS ========== */
 function renderSections(){
   CFG.sections=CFG.sections||[];
   const items=CFG.sections.map((s,si)=>{
     migrateSection(s);
     const blocks=s.blocks.map((b,bi)=>blockEditor(b,si,bi)).join('');
-    return `<div class="card"><h3>📄 ${esc(s.title||'Section')}<span class="sp"></span><div class="reorder"><button class="btn sm" onclick="move(CFG.sections,${si},-1)">▲</button><button class="btn sm" onclick="move(CFG.sections,${si},1)">▼</button></div>${switchEl(s.enabled,`CFG.sections[${si}].enabled=this.checked`)}<button class="btn sm danger" onclick="if(confirm('Delete whole section?')){CFG.sections.splice(${si},1);touch()}">Delete</button></h3>
-      <div class="row">${txt('Section id',s.id,`CFG.sections[${si}].id=this.value`)}${txt('Title',s.title,`CFG.sections[${si}].title=this.value`)}</div>
+    return `<div class="card"><h3>📄 ${esc(s.title||'Section')} <span class="chip">${esc(s.id)}</span><span class="sp"></span><div class="reorder"><button class="btn sm" onclick="move(CFG.sections,${si},-1)">▲</button><button class="btn sm" onclick="move(CFG.sections,${si},1)">▼</button></div>${switchEl(s.enabled,`CFG.sections[${si}].enabled=this.checked`)}<button class="btn sm danger" onclick="if(confirm('Delete whole section?')){CFG.sections.splice(${si},1);touch()}">Delete</button></h3>
+      <div class="hint" style="margin-bottom:10px">Section ID: <b>${esc(s.id)}</b> — tiles with action_type "section" and action_target "${esc(s.id)}" will link here. Use this ID in Remote Fetch too.</div>
+      <div class="row">${txt('Section ID (for remote fetch & tile links)',s.id,`CFG.sections[${si}].id=this.value`,'e.g. movies, livetv, sports...')}${txt('Title',s.title,`CFG.sections[${si}].title=this.value`)}</div>
       ${txt('Subtitle',s.subtitle,`CFG.sections[${si}].subtitle=this.value`)}
       <div style="margin:14px 0 6px;font-weight:700;font-size:12px">Blocks (any order)</div>
       ${blocks||'<div class="subtle">No blocks yet — add one below.</div>'}
@@ -329,12 +335,11 @@ function renderSections(){
       </div>
     </div>`;
   }).join('');
-  return `<div class="hint">Sections are detail pages. Each holds <b>blocks</b> you can stack in any order: app boxes, web boxes, tiles, text, buttons, dividers. Build anything.</div>${items||''}<button class="btn primary" onclick="CFG.sections.push(newSection());touch()">+ Add new section</button>`;
+  return `<div class="hint">Sections are detail pages. Each holds <b>blocks</b> you can stack in any order: app boxes, web boxes, tiles, text, buttons, dividers. Build anything.<br><br>⚠ The <b>Section ID</b> is what connects tiles on the landing page to this section — and what Remote Fetch uses to target apps inside it.</div>${items||''}<button class="btn primary" onclick="CFG.sections.push(newSection());touch()">+ Add new section</button>`;
 }
 
 function migrateSection(s){
   if(Array.isArray(s.blocks)) return;
-  // convert old apps/web_links into blocks
   s.blocks=[];
   if((s.apps||[]).length) s.blocks.push({id:uid(),type:'apps',enabled:true,apps:s.apps});
   if((s.web_links||[]).length){ s.blocks.push({id:uid(),type:'divider',enabled:true,label:'OR'}); s.blocks.push({id:uid(),type:'webs',enabled:true,webs:s.web_links}); }
@@ -363,7 +368,7 @@ function blockEditor(b,si,bi){
     body=b.webs.map((w,wi)=>webEditor(w,`${p}.webs`,wi)).join('')+`<button class="btn sm" onclick="${p}.webs.push(newWeb());touch()">+ Add web link</button>`;
   }else if(b.type==='tiles'){
     b.tiles=b.tiles||[];
-    body=txt('Columns',b.columns||2,`${p}.columns=parseInt(this.value)||2`)+b.tiles.map((t,ti)=>`<div class="item"><div class="item-head"><span class="title">${esc(t.title||'Tile')}</span><div class="reorder"><button class="btn sm" onclick="move(${p}.tiles,${ti},-1)">▲</button><button class="btn sm" onclick="move(${p}.tiles,${ti},1)">▼</button></div>${switchEl(t.enabled,`${p}.tiles[${ti}].enabled=this.checked`)}</div>${tileEditor(t,`${p}.tiles[${ti}]`)}<button class="btn sm danger" onclick="${p}.tiles.splice(${ti},1);touch()">Delete</button></div>`).join('')+`<button class="btn sm" onclick="${p}.tiles.push(newTile());touch()">+ Add tile</button>`;
+    body=txt('Columns',b.columns||2,`${p}.columns=parseInt(this.value)||2`)+b.tiles.map((t,ti)=>`<div class="item"><div class="item-head"><span class="title">${esc(t.title||'Tile')} <span class="chip">${esc(t.id)}</span></span><div class="reorder"><button class="btn sm" onclick="move(${p}.tiles,${ti},-1)">▲</button><button class="btn sm" onclick="move(${p}.tiles,${ti},1)">▼</button></div>${switchEl(t.enabled,`${p}.tiles[${ti}].enabled=this.checked`)}</div>${tileEditor(t,`${p}.tiles[${ti}]`)}<button class="btn sm danger" onclick="${p}.tiles.splice(${ti},1);touch()">Delete</button></div>`).join('')+`<button class="btn sm" onclick="${p}.tiles.push(newTile());touch()">+ Add tile</button>`;
   }else if(b.type==='text'){
     body=txt('Heading',b.heading,`${p}.heading=this.value`)+area('Body',b.body,`${p}.body=this.value`);
   }else if(b.type==='button'){
@@ -375,17 +380,20 @@ function blockEditor(b,si,bi){
   return `<div class="item">${head}${body}</div>`;
 }
 
+/* ========== APP EDITOR (with editable ID + image logo) ========== */
 function appEditor(a,arrPath,ai){
   const p=`${arrPath}[${ai}]`;
   ensureLogo(a);
   a.badge_colors=a.badge_colors||['#e8163a','#f43f5e'];
   a.btn_colors=a.btn_colors||['#e8163a','#b8102e'];
   const feats=(a.features||[]).map((f,fi)=>`<div class="feat-row"><input type="text" value="${attr(f)}" oninput="${p}.features[${fi}]=this.value"><button class="btn sm danger" onclick="${p}.features.splice(${fi},1);touch()">✕</button></div>`).join('');
-  return `<div class="item"><div class="item-head"><span class="title">${esc(a.name||'App')}</span><div class="reorder"><button class="btn sm" onclick="move(${arrPath},${ai},-1)">▲</button><button class="btn sm" onclick="move(${arrPath},${ai},1)">▼</button></div>${switchEl(a.enabled,`${p}.enabled=this.checked`)}</div>
+  return `<div class="item"><div class="item-head"><span class="title">${esc(a.name||'App')} <span class="chip">${esc(a.id)}</span></span><div class="reorder"><button class="btn sm" onclick="move(${arrPath},${ai},-1)">▲</button><button class="btn sm" onclick="move(${arrPath},${ai},1)">▼</button></div>${switchEl(a.enabled,`${p}.enabled=this.checked`)}</div>
+    <div class="hint" style="margin-bottom:10px">App ID: <b>${esc(a.id)}</b> — use this in Remote Fetch mappings to set download_url and version</div>
+    ${txt('App ID (for remote fetch)',a.id,`${p}.id=this.value`,'e.g. nettv, nethub, netsports...')}
     ${logoEditor(a.logo,`${p}.logo`)}
     <div class="row">${txt('Name',a.name,`${p}.name=this.value`)}${txt('Version',a.version,`${p}.version=this.value`)}</div>
     <div class="row">${txt('Size text',a.size_text,`${p}.size_text=this.value`)}${txt('Button text',a.btn_text,`${p}.btn_text=this.value`)}</div>
-    ${txt('Download URL (blank = dummy)',a.download_url,`${p}.download_url=this.value`,'https://...apk')}
+    ${txt('Download URL (blank = from remote fetch)',a.download_url,`${p}.download_url=this.value`,'https://...apk')}
     <div class="row">${txt('Badge text',a.badge_text,`${p}.badge_text=this.value`)}${color('Badge text color',a.badge_text_color,`${p}.badge_text_color=this.value`)}</div>
     <div class="row">${color('Badge grad 1',a.badge_colors[0],`${p}.badge_colors[0]=this.value`)}${color('Badge grad 2',a.badge_colors[1],`${p}.badge_colors[1]=this.value`)}</div>
     <div class="row">${color('Button grad 1',a.btn_colors[0],`${p}.btn_colors[0]=this.value`)}${color('Button grad 2',a.btn_colors[1],`${p}.btn_colors[1]=this.value`)}</div>
@@ -396,10 +404,19 @@ function appEditor(a,arrPath,ai){
     <button class="btn sm danger" style="margin-top:8px" onclick="${arrPath}.splice(${ai},1);touch()">Delete app</button>
   </div>`;
 }
+
+/* ========== WEB LINK EDITOR (with editable ID + image icon) ========== */
 function webEditor(w,arrPath,wi){
   const p=`${arrPath}[${wi}]`;
-  return `<div class="item"><div class="item-head"><span class="title">${esc(w.name||'Web link')}</span><div class="reorder"><button class="btn sm" onclick="move(${arrPath},${wi},-1)">▲</button><button class="btn sm" onclick="move(${arrPath},${wi},1)">▼</button></div>${switchEl(w.enabled,`${p}.enabled=this.checked`)}</div>
-    <div class="row">${txt('Name',w.name,`${p}.name=this.value`)}${txt('Icon (emoji)',w.icon,`${p}.icon=this.value`)}</div>
+  w.icon_type=w.icon_type||'emoji';
+  w.icon_img=w.icon_img||'';
+  return `<div class="item"><div class="item-head"><span class="title">${esc(w.name||'Web link')} <span class="chip">${esc(w.id)}</span></span><div class="reorder"><button class="btn sm" onclick="move(${arrPath},${wi},-1)">▲</button><button class="btn sm" onclick="move(${arrPath},${wi},1)">▼</button></div>${switchEl(w.enabled,`${p}.enabled=this.checked`)}</div>
+    ${txt('Web Link ID (for remote fetch)',w.id,`${p}.id=this.value`,'e.g. webplayer, tv_web...')}
+    <div class="row">${txt('Name',w.name,`${p}.name=this.value`)}
+    ${sel('Icon type',w.icon_type,['emoji','image'],`${p}.icon_type=this.value;touch()`)}</div>
+    ${w.icon_type==='image'?txt('Icon image URL',w.icon_img,`${p}.icon_img=this.value`,'https://...png'):''}
+    ${w.icon_type==='image'?`<button class="btn sm" style="margin-bottom:10px" onclick="pickImage(u=>{${p}.icon_img=u})">⬆ Upload icon</button>`:''}
+    ${w.icon_type!=='image'?txt('Icon (emoji)',w.icon,`${p}.icon=this.value`):''}
     ${txt('URL',w.url,`${p}.url=this.value`,'https://...')}
     ${txt('Description',w.description,`${p}.description=this.value`)}
     <div class="row">${txt('Badge',w.badge,`${p}.badge=this.value`)}${txt('Button text',w.btn_text,`${p}.btn_text=this.value`)}</div>
@@ -407,7 +424,7 @@ function webEditor(w,arrPath,wi){
   </div>`;
 }
 
-/* ---------- MAINTENANCE ---------- */
+/* ========== MAINTENANCE ========== */
 function renderMaintenance(){
   const m=CFG.maintenance=CFG.maintenance||{enabled:false,icon:'🔧',title:'Under Maintenance',message:'',show_telegram:true};
   return `<div class="hint">When ON, the whole public site is replaced by a maintenance screen until you turn it off.</div>
@@ -420,30 +437,53 @@ function renderMaintenance(){
   </div>`;
 }
 
-/* ---------- FOOTER / META / REMOTE ---------- */
+/* ========== FOOTER ========== */
 function renderFooter(){
   const f=CFG.footer=CFG.footer||{};f.links=f.links||[];
   const links=f.links.map((l,i)=>`<div class="item"><div class="row">${txt('Label',l.label,`CFG.footer.links[${i}].label=this.value`)}${txt('URL',l.url,`CFG.footer.links[${i}].url=this.value`)}</div><button class="btn sm danger" onclick="CFG.footer.links.splice(${i},1);touch()">Remove</button></div>`).join('');
   return `<div class="card"><h3>Footer</h3>${txt('Telegram URL',f.telegram_url,`CFG.footer.telegram_url=this.value`)}${txt('Telegram button text',f.telegram_text,`CFG.footer.telegram_text=this.value`)}${txt('Status text',f.status_text,`CFG.footer.status_text=this.value`)}${txt('Copyright',f.copyright,`CFG.footer.copyright=this.value`)}</div><div class="card"><h3>Footer links<span class="sp"></span><button class="btn sm" onclick="CFG.footer.links.push({label:'New',url:''});touch()">+ Add</button></h3>${links||'<div class="subtle">None</div>'}</div>`;
 }
+
+/* ========== META / SEO ========== */
 function renderMeta(){
   const m=CFG.meta=CFG.meta||{};
   return `<div class="card"><h3>Meta / SEO</h3>${txt('Site title',m.site_title,`CFG.meta.site_title=this.value`)}${area('Description',m.description,`CFG.meta.description=this.value`)}<div class="row">${color('Theme color',m.theme_color,`CFG.meta.theme_color=this.value`)}${txt('OG image URL',m.og_image,`CFG.meta.og_image=this.value`)}</div>${txt('Favicon',m.favicon,`CFG.meta.favicon=this.value`)}</div>`;
 }
+
+/* ========== REMOTE FETCH (with available IDs panel) ========== */
 function renderRemote(){
   const rf=CFG.remote_fetch=CFG.remote_fetch||{mappings:[]};rf.mappings=rf.mappings||[];
-  const maps=rf.mappings.map((m,i)=>`<div class="item"><div class="row3">${txt('JSON key',m.json_key,`CFG.remote_fetch.mappings[${i}].json_key=this.value`)}${txt('Target app/tile id',m.target_app,`CFG.remote_fetch.mappings[${i}].target_app=this.value`)}${sel('Field',m.field||'download_url',['download_url','version','action_target'],`CFG.remote_fetch.mappings[${i}].field=this.value`)}</div><button class="btn sm danger" onclick="CFG.remote_fetch.mappings.splice(${i},1);touch()">Remove</button></div>`).join('');
-  return `<div class="hint">Keys from your GitHub <code>loaded</code> file override app fields live (download URLs, versions).</div><div class="card"><h3>Remote fetch URL</h3>${txt('URL',rf.url,`CFG.remote_fetch.url=this.value`)}</div><div class="card"><h3>Mappings<span class="sp"></span><button class="btn sm" onclick="CFG.remote_fetch.mappings.push({json_key:'',target_app:'',field:'download_url'});touch()">+ Add mapping</button></h3>${maps||'<div class="subtle">None</div>'}</div>`;
+  /* collect all known IDs across the entire config for reference */
+  const ids=[];
+  (CFG.landing_tiles||[]).forEach(t=>ids.push({id:t.id,label:'Tile: '+t.title}));
+  (CFG.landing_groups||[]).forEach(g=>(g.tiles||[]).forEach(t=>ids.push({id:t.id,label:'Group tile: '+t.title})));
+  (CFG.sections||[]).forEach(s=>{
+    ids.push({id:s.id,label:'Section: '+s.title});
+    (s.blocks||[]).forEach(b=>{
+      if(b.type==='apps')(b.apps||[]).forEach(a=>ids.push({id:a.id,label:'App: '+a.name}));
+      if(b.type==='webs')(b.webs||[]).forEach(w=>ids.push({id:w.id,label:'Web: '+w.name}));
+      if(b.type==='tiles')(b.tiles||[]).forEach(t=>ids.push({id:t.id,label:'Block tile: '+t.title}));
+    });
+    /* legacy format support */
+    (s.apps||[]).forEach(a=>ids.push({id:a.id,label:'App (legacy): '+a.name}));
+    (s.web_links||[]).forEach(w=>ids.push({id:w.id,label:'Web (legacy): '+w.name}));
+  });
+  const idRef=ids.map(x=>`<span class="chip" style="margin:2px;cursor:pointer" onclick="navigator.clipboard.writeText('${esc(x.id)}');toast('Copied: ${esc(x.id)}','ok')" title="Click to copy">${esc(x.label)} → <b>${esc(x.id)}</b></span>`).join(' ');
+  const maps=rf.mappings.map((m,i)=>`<div class="item"><div class="row3">${txt('JSON key',m.json_key,`CFG.remote_fetch.mappings[${i}].json_key=this.value`)}${txt('Target app/tile ID',m.target_app,`CFG.remote_fetch.mappings[${i}].target_app=this.value`)}${sel('Field',m.field||'download_url',['download_url','version','action_target'],`CFG.remote_fetch.mappings[${i}].field=this.value`)}</div><button class="btn sm danger" onclick="CFG.remote_fetch.mappings.splice(${i},1);touch()">Remove</button></div>`).join('');
+  return `<div class="hint">Keys from your GitHub <code>load</code> file override app/tile fields live (download URLs, versions, action targets). The <b>Target ID</b> must match an App ID, Tile ID or Web Link ID from above.</div>
+  <div class="card"><h3>Remote Fetch URL</h3>${txt('URL',rf.url,`CFG.remote_fetch.url=this.value`)}</div>
+  <div class="card"><h3>📋 Available IDs (click to copy)</h3><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px">${idRef||'<span class="subtle">No items yet — add sections, apps, or tiles first</span>'}</div></div>
+  <div class="card"><h3>Mappings<span class="sp"></span><button class="btn sm" onclick="CFG.remote_fetch.mappings.push({json_key:'',target_app:'',field:'download_url'});touch()">+ Add mapping</button></h3>${maps||'<div class="subtle">None</div>'}</div>`;
 }
 
-/* ---------- FACTORIES ---------- */
-function newTile(){return{id:uid(),icon:'🎬',icon_type:'emoji',icon_img:'',title:'New',subtitle:'',color:'#e8163a',gradient_end:'#b8102e',badge_text:'',badge_color:'#e8163a',cta_text:'Open ›',action_type:'section',action_target:'',enabled:true};}
-function newApp(){return{id:uid(),name:'New App',logo:{type:'text',text:'A',colors:['#e8163a','#b8102e']},badge_text:'',badge_colors:['#e8163a','#f43f5e'],badge_text_color:'#fff',version:'1.0',download_url:'',btn_text:'Download APK',btn_colors:['#e8163a','#b8102e'],btn_text_color:'#fff',size_text:'Android · Free',features:['Feature one'],feature_check_color:'#e8163a',feature_check_bg:'rgba(232,22,58,.15)',enabled:true};}
-function newWeb(){return{id:uid(),name:'Web Player',url:'https://',description:'',badge:'No Install',icon:'🌐',btn_text:'Open ›',enabled:true};}
-function newSection(){return{id:uid(),title:'New Section',subtitle:'',enabled:true,blocks:[]};}
+/* ========== FACTORIES (readable prefixed IDs) ========== */
+function newTile(){return{id:'tile-'+uid().slice(1),icon:'🎬',icon_type:'emoji',icon_img:'',title:'New',subtitle:'',color:'#e8163a',gradient_end:'#b8102e',badge_text:'',badge_color:'#e8163a',cta_text:'Open ›',action_type:'section',action_target:'',enabled:true};}
+function newApp(){return{id:'app-'+uid().slice(1),name:'New App',logo:{type:'text',text:'A',colors:['#e8163a','#b8102e']},badge_text:'',badge_colors:['#e8163a','#f43f5e'],badge_text_color:'#fff',version:'1.0',download_url:'',btn_text:'Download APK',btn_colors:['#e8163a','#b8102e'],btn_text_color:'#fff',size_text:'Android · Free',features:['Feature one'],feature_check_color:'#e8163a',feature_check_bg:'rgba(232,22,58,.15)',enabled:true};}
+function newWeb(){return{id:'web-'+uid().slice(1),name:'Web Player',url:'https://',description:'',badge:'No Install',icon:'🌐',icon_type:'emoji',icon_img:'',btn_text:'Open ›',enabled:true};}
+function newSection(){return{id:'section-'+uid().slice(1),title:'New Section',subtitle:'',enabled:true,blocks:[]};}
 function defaultConfig(){return{meta:{site_title:'NetMovie',description:'',theme_color:'#06080f'},maintenance:{enabled:false,icon:'🔧',title:'Under Maintenance',message:"We'll be back shortly.",show_telegram:true},hero:{brand_name:'Net',brand_accent:'Movie',brand_color:'#e8163a',brand_logo:{type:'text',text:'N',colors:['#e8163a','#b8102e']},title_line1:'Stream Everything.',title_line2:'Pay Nothing.',subtitle:'',languages:['English'],features:[]},landing_tiles:[],landing_groups:[],sections:[],footer:{telegram_url:'',telegram_text:'Join Telegram',status_text:'',copyright:'© NetMovie',links:[]},remote_fetch:{url:'https://raw.githubusercontent.com/netmovieinc-png/loaded/refs/heads/main/load',mappings:[]}};}
 
-/* auto-login */
+/* ========== AUTO-LOGIN ========== */
 (function(){const s=localStorage.getItem('nm_admin');if(s){try{GH=JSON.parse(s);$('g_owner').value=GH.owner;$('g_repo').value=GH.repo;$('g_branch').value=GH.branch;$('g_path').value=GH.path;$('g_token').value=GH.token;$('g_remember').checked=true;loadConfig();}catch(e){}}})();
 </script>
 </body>
