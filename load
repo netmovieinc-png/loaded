@@ -28,10 +28,10 @@
 "ntdrma_url" :  "https://github.com/Rano999/moviepg/releases/download/Netdrama-1.1/NetDrama-1.2.apk",
 "ntdrma_ver" : "1.0",
 
-"netmovie_ver": "5.0",
-"netmovie_url": "https://github.com/Rano999/moviepg/releases/download/NetMovie-2.0/NetMovie-2.0.apk",
-"netmovie_cod": 2,
-"netmovie_des": "netmovie testing app",
+"netmovie_ver": "5.5",
+"netmovie_url": "https://github.com/Rano999/moviepg/releases/download/netmovie-3/NetMovie-3.0.apk",
+"netmovie_cod": 3,
+"netmovie_des": "what's new: \n• Server issue fixes and performance improvements.",
 "netmovie_force": true,
 
 "nethome_ver": "5.0",
