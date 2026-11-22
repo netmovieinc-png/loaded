@@ -312,7 +312,7 @@
               ],
               "feature_check_color": "#f50a0a",
               "feature_check_bg": "#f50a0a",
-              "enabled": true,
+              "enabled": false,
               "order": 6
             },
             {
